@@ -10,16 +10,55 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVE_WorkIt_MP">
         <activity
-            android:name=".DefaultWorkoutActivity"
+            android:name=".CreateWorkoutSelectExercisesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyWorkoutExercisesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddExerciseToWorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateWorkoutActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+         <!--   <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
+        <activity
+            android:name=".MyWorkoutActivity"
+            android:exported="true">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WorkoutDoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RestTimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RunningExerciseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewExerciseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusyScheduleWorkoutActivity"
+            android:exported="true">
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
     </application>
 
 </manifest>

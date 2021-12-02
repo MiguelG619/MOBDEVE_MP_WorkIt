@@ -4,6 +4,7 @@ import java.io.Serializable
 import java.util.ArrayList
 
 class WorkoutModel (
-    var workout_name: String,
-    var exerciseModels: ArrayList<ExerciseModel>
+    var workoutName: String,
+    var exercises: ArrayList<ExerciseModel>,
+    var numExercises: Int = exercises.size
 ) : Serializable
