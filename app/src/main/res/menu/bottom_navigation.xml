@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_tab_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_streak"
+        android:icon="@drawable/ic_tab_streak"
+        android:title="Streak" />
+
+    <item
+        android:id="@+id/nav_reminder"
+        android:icon="@drawable/ic_tab_reminder"
+        android:title="Reminder" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_tab_logout"
+        android:title="Log Out" />
+
+
+
+</menu>
