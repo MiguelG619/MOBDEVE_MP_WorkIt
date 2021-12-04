@@ -17,6 +17,8 @@ import com.facebook.login.widget.LoginButton
 import java.util.*
 import android.content.Intent
 import com.facebook.*
+import com.facebook.login.LoginManager
+import org.json.JSONException
 import org.json.JSONObject
 
 
@@ -37,34 +39,37 @@ class LogInActivity : AppCompatActivity() {
 
         // Callback registration
         fbLogIn.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
-            override fun onSuccess(loginResult: LoginResult?) {
-                Log.d("Demo", "Login successful.")
-                val graphRequest = GraphRequest.newMeRequest(loginResult?.accessToken) {
-                    `object`, response ->
-                    getFacebookData(`object`!!)
+            override fun onSuccess(result: LoginResult?) {
+                Log.d("Demo", "Login Successful")
+                val graphRequest = GraphRequest.newMeRequest(result?.accessToken) {obj, response ->
+                    try {
+                        if (obj!!.has("id")) {
+                            var obj = JSONObject()
+                            val name = obj.getString("name")
+                            val firstName = obj.getString("first_name")
+                            Log.d("facebookdata", name)
+                            Log.d("facebookdata", firstName)
+                            // assign it to the textview
+                            binding!!.tvDontHaveAc.text = name
+                        }
+                    } catch(e: Exception) {
+                        e.printStackTrace()
                 }
-                val parameters = Bundle()
-                parameters.putString("fields", "first_name")
-                graphRequest.parameters = parameters
+
+
+                }
+                val param = Bundle()
+                param.putString("fields", "name, first_name")
+                graphRequest.parameters = param
                 graphRequest.executeAsync()
 
-                val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
-                //Passing data to from one page to another or in this case a string
-                //Passing objects or big data
-                gotoHomeActivity.putExtra("extra_firstName", graphRequest.parameters.toString())
-
-                startActivity(gotoHomeActivity)
-                // Destroys the originating activity to prevent hackers
-                finish()
-
             }
-
             override fun onCancel() {
-                Log.d("Demo", "Login canceled.")
+
             }
 
-            override fun onError(exception: FacebookException) {
-                Log.d("Demo", "Login error.")
+            override fun onError(error: FacebookException) {
+
             }
 
 
@@ -81,5 +86,42 @@ class LogInActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager!!.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+
+        val graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
+            GraphRequest.GraphJSONObjectCallback() { jsonObject: JSONObject?, graphResponse: GraphResponse? ->
+                fun onCompleted(jsonObject: JSONObject, response: GraphResponse) {
+                    Log.d("Demo", jsonObject.toString())
+                    try {
+                        var name = jsonObject.getString("name")
+                        var firstName = jsonObject.getString("first_name")
+                        Log.d("facebookdata", name)
+                        Log.d("facebookdata", firstName)
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }
+            })
+
+        var bundle = Bundle()
+        bundle.putString("fields", "first_name")
+
+        graphRequest.parameters = bundle
+        graphRequest.executeAsync()
+
+    }
+
+    var accessTokenTracker = object: AccessTokenTracker() {
+        override fun onCurrentAccessTokenChanged(
+            oldAccessToken: AccessToken?,
+            currentAccessToken: AccessToken?
+        ) {
+            if (currentAccessToken == null)
+                LoginManager.getInstance().logOut()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        accessTokenTracker.stopTracking()
     }
 }

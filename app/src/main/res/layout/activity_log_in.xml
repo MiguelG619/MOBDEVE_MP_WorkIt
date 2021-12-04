@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.auth.LoginActivity">
+    tools:context=".ui.auth.LoginActivity"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -119,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:layout_marginBottom="7dp"
+            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="#D1D5DB"
             app:cardCornerRadius="12dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_FBLogIn"
@@ -163,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".95" />
+            app:layout_constraintGuide_percent=".90" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
