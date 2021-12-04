@@ -14,10 +14,10 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        /*var firstNameExtra = intent.getStringExtra("extra_firstName")
+        var firstNameExtra = intent.getStringExtra("firstNameExtra")
         Log.i("Home Activity", " Username from Extra: $firstNameExtra")
 
-        binding!!.tvUsername.text = "Hello, $firstNameExtra"*/
+        binding!!.tvUsername.text = "Hello, $firstNameExtra"
 
     }
 }
