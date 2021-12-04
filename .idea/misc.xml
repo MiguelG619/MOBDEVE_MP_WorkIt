@@ -3,34 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/drawable/back_edt_green.xml" value="0.19583333333333333" />
+        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/drawable/card_back_yellow.xml" value="0.19583333333333333" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/drawable/ic_tab_home.xml" value="0.19583333333333333" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/drawable/ic_tab_logout.xml" value="0.19583333333333333" />
-        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_default_workout.xml" value="0.2673611111111111" />
+        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_default_workout.xml" value="0.1" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_home.xml" value="0.1796875" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_login.xml" value="0.1796875" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_view_exercise.xml" value="0.1" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/item_row_exercise.xml" value="0.36" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/menu/bottom_navigation.xml" value="0.1796875" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/drawable/back_edt_green.xml" value="0.2703125" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/acitivity_home_my_workout.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_create_workout.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_create_workout_select_exercises.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_home.xml" value="0.176" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_home_busy_workout.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_log_in.xml" value="0.15172101449275363" />
         <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_login.xml" value="0.1644021739130435" />
         <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_main.xml" value="0.1644021739130435" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_my_workout.xml" value="0.15172101449275363" />
         <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_register.xml" value="0.1644021739130435" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_rest_time.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_running_exercise.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_splash.xml" value="0.1644021739130435" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_view_exercise.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/activity_workout_done.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/created_workout_name.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/layout/item_row_exercise.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Sherick Yu/AndroidStudioProjects/MOBDEVE_MP_WorkIt/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
       </map>
     </option>
   </component>

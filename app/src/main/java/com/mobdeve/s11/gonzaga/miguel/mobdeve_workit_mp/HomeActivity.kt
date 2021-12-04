@@ -12,11 +12,12 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
-
         setContentView(binding!!.root)
+
         /*var firstNameExtra = intent.getStringExtra("extra_firstName")
         Log.i("Home Activity", " Username from Extra: $firstNameExtra")
 
         binding!!.tvUsername.text = "Hello, $firstNameExtra"*/
+
     }
 }
