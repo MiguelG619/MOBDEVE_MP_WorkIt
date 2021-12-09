@@ -5,17 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.WorkoutAdapter
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
-class MyWorkoutActivity : AppCompatActivity() {
+class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListener {
     // Set what xml file you want to access
     var binding: ActivityMyWorkoutBinding? = null
     // One responsible for populating the userList
     var workoutAdapter: WorkoutAdapter? = null
     // Content of the data
     var workoutList = ArrayList<WorkoutModel>()
+    var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
+
+
     var exerciseList = ArrayList<ExerciseModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,11 +27,9 @@ class MyWorkoutActivity : AppCompatActivity() {
         binding = ActivityMyWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-
-
         populateList()
         // populates the user adapter
-        workoutAdapter = WorkoutAdapter(applicationContext, workoutList)
+        workoutAdapter = WorkoutAdapter(workoutList, this)
         // When using an adapter you can set the layout manager
         // Grid or linear layout pwede gamitin
         //Makes it scrollable if there are many content
@@ -52,19 +54,15 @@ class MyWorkoutActivity : AppCompatActivity() {
     }
 
     fun populateList() {
+        workoutDAO.getMyWorkouts()
+    }
 
-        var i: Int = 0
+    override fun onDeleteClick(position: Int) {
+        TODO("Not yet implemented")
+    }
 
-        while (i < 3) {
-            exerciseList.add(ExerciseModel("Burst Workout", "Jumping Jacks" ,
-                "A conditioning exercise performed from a standing position by jumping to a position." +
-                        "with legs spread and arms raised and then to the original position.", 30, 3, 10))
-
-            i++
-        }
-        workoutList.add(
-            WorkoutModel("Created Workout 1", exerciseList))
-
+    override fun onLoadClick(position: Int) {
+        TODO("Not yet implemented")
     }
 
 }

@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         var firstNameExtra = intent.getStringExtra("firstNameExtra")
         Log.i("Home Activity", " Username from Extra: $firstNameExtra")
 
-        binding!!.tvUsername.text = "Hello, $firstNameExtra"
+        /*binding!!.tvUsername.text = "Hello, $firstNameExtra"*/
 
     }
 }
