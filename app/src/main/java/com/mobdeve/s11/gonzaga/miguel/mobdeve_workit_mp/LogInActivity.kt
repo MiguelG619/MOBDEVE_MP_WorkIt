@@ -40,7 +40,7 @@ class LogInActivity : AppCompatActivity() {
                             Log.d("facebookdata", obj.getString("name"))
                             Log.d("facebookdata", firstName)
 
-                            val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
+                            val gotoHomeActivity  = Intent(applicationContext, StreakActivity::class.java)
                             //Passing data to from one page to another or in this case a string
                             gotoHomeActivity.putExtra("firstNameExtra", firstName)
                             startActivity(gotoHomeActivity)
