@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/drawable/streak_button.xml" value="0.19583333333333333" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_add_exercise_to_workout.xml" value="0.2" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_busy_schedule_workout.xml" value="0.2" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_create_workout.xml" value="0.2" />
@@ -14,7 +15,7 @@
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_my_workout_exercises.xml" value="0.1" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_rest_time.xml" value="0.1796875" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_running_exercise.xml" value="0.1" />
-        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_streak.xml" value="0.36" />
+        <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_streak.xml" value="0.268" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_view_exercise.xml" value="0.1" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/activity_workout_done.xml" value="0.1" />
         <entry key="..\:/A-MIGUEL/College/4th Year 2020-2021/1st Term/MOBDEVE/Project/MOBDEVE_WorkIt_MP/app/src/main/res/layout/created_workout_name.xml" value="0.4" />
