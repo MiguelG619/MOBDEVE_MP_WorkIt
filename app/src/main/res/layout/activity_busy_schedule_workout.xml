@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.DaysListFragment">
+    tools:context=".BusyScheduleWorkoutActivity"
+    android:id="@+id/busyScheduleWorkout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -141,7 +142,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_navigation"
             android:background="@color/white"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="labeled"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"/>
 
 
 

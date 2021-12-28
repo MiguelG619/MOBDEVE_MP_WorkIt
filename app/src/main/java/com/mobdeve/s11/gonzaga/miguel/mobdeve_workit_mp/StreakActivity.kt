@@ -26,6 +26,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.facebook.FacebookCallback
 import com.facebook.FacebookSdk
 import com.facebook.share.Sharer
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class StreakActivity : AppCompatActivity() {
@@ -52,6 +53,7 @@ class StreakActivity : AppCompatActivity() {
             //startForResult.launch(Intent(this, AnotherActivity::class.java))
             var bitmap = screenShot()
             binding.btnShareLink.visibility = View.VISIBLE
+            binding.bottomNavigation.visibility = View.VISIBLE
 
             var sharePhoto = SharePhoto.Builder()
                 .setBitmap(bitmap)
@@ -64,29 +66,28 @@ class StreakActivity : AppCompatActivity() {
             shareDialog.show(sharePhotoContent)
         }
 
+        var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_streak)
+        /*binding.bottomNavigation.selectedItemId = R.id.nav_home
+        binding.bottomNavigation.selectedItemId = R.id.nav_home
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> startActivity(Intent(applicationContext, HomeActivity::class.java))
+                R.id.nav_streak -> startActivity(Intent(applicationContext, StreakActivity::class.java))
+                //R.id.nav_reminder -> startActivity(Intent(applicationContext, ReminderActivity::class.java))
+                //R.id.nav_logout -> startActivity(Intent(applicationContext, LogOutActivity::class.java))
+            }
+            true
+        }*/
+
+
     }
 
-   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(requestCode, resultCode, data)
 
-        var bitmap = screenShot()
-        binding.btnShareLink.visibility = View.VISIBLE
-
-        var sharePhoto = SharePhoto.Builder()
-            .setBitmap(bitmap)
-            .build()
-
-         sharePhotoContent = SharePhotoContent.Builder()
-            .addPhoto(sharePhoto)
-            .build()
-
-        shareDialog.show(sharePhotoContent)
-    }*/
 
 
     fun screenShot(): Bitmap? {
         binding.btnShareLink.visibility = View.GONE
+        binding.bottomNavigation.visibility = View.GONE
         var view = window.decorView.rootView
         val bitmap = Bitmap.createBitmap(
             view.width,

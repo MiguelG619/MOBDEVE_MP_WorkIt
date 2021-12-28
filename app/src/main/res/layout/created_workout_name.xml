@@ -7,7 +7,8 @@
     app:cardCornerRadius="5dp"
     app:strokeColor="@color/black"
     app:strokeWidth="1dip"
-    android:id="@+id/mcv_workoutName">
+    android:id="@+id/mcv_workoutName"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
