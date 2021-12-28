@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusyScheduleWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 
 
 class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
-    // var binding: ActivityBusyScheduleWorkoutBinding? = null
+    lateinit var binding: ActivityBusyScheduleWorkoutBinding
     var exerciseAdapter: ExerciseAdapter? = null
     var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
@@ -22,38 +23,35 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)*/
-        setContentView(R.layout.activity_busy_schedule_workout)
+        binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
 
-        val rvExercises = findViewById<RecyclerView>(R.id.rv_exercises)
-        val tvStart = findViewById<TextView>(R.id.tv_start)
-        val ivBack = findViewById<ImageView>(R.id.iv_back)
+
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
-        rvExercises.adapter = exerciseAdapter
-        rvExercises.layoutManager = LinearLayoutManager(applicationContext,
+        binding.rvExercises.adapter = exerciseAdapter
+        binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
 
 
-        tvStart.setOnClickListener {
+        binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
             startActivity(gotoRunningExerciseActivity)
             finish()
         }
 
-        ivBack.setOnClickListener {
+        binding. ivBack.setOnClickListener {
             // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
             finish()
         }
 
-
         var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+
 
     }
 
