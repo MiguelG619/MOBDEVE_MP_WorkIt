@@ -3,7 +3,7 @@
 
     <item
         android:state_selected="true"
-        android:color="@color/streak_background"/>
+        android:color="@color/main_blue"/>
 
     <item
         android:state_selected="false"

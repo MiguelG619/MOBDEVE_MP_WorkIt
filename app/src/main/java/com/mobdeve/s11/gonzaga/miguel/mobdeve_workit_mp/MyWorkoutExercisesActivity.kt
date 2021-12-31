@@ -3,6 +3,7 @@ package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutExercisesBinding
@@ -36,7 +37,7 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
             false)
 
         binding!!.rvWorkoutList.adapter = exerciseAdapter
-
+        var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
     fun populateList() {

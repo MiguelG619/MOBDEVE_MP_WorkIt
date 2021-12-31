@@ -11,10 +11,25 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="jar:file:/D:/A-MIGUEL/Android/plugins/android/lib/android.jar!/images/material/icons/materialicons/timer/baseline_timer_24.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_wave_bg_header" />
+                            <entry key="color" value="0485f6" />
+                            <entry key="outputName" value="ic_baseline_timer_24" />
                             <entry key="sourceFile" value="D:\A-MIGUEL\College\4th Year 2020-2021\1st Term\MOBDEVE\Resources\wave_bg_header.svg" />
                           </map>
                         </option>

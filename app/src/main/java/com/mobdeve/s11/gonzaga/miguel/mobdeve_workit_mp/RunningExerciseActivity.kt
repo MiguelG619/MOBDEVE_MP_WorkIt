@@ -16,8 +16,8 @@ class RunningExerciseActivity : AppCompatActivity() {
         setContentView(binding!!.root)
 
         binding!!.tvDone.setOnClickListener {
-            val gotoWorkoutDoneActivity = Intent(applicationContext, WorkoutDoneActivity::class.java)
-            startActivity(gotoWorkoutDoneActivity)
+            val gotoRestTimeActivity = Intent(applicationContext, RestTimeActivity::class.java)
+            startActivity(gotoRestTimeActivity)
             finish()
         }
     }

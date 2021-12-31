@@ -63,7 +63,16 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
         TODO("Not yet implemented")
     }
 
-    override fun onLoadClick(position: Int) {
-        TODO("Not yet implemented")
+    fun populateExerciseData() {
+
     }
+
+    override fun onLoadClick(position: Int) {
+        // Send data first based on the position
+        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        startActivity(gotoViewExerciseActivity)
+        finish()
+    }
+
+
 }

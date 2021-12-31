@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,27 +14,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVE_WorkIt_MP">
         <activity
-            android:name=".StreakActivity"
-            android:exported="true">
-       <!-- <intent-filter>
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LogOutActivity"
+            android:exported="false">
+
+            <!--
+            <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>-->
+        </intent-filter>
+            -->
         </activity>
+        <activity
+            android:name=".StreakActivity"
+            android:exported="true">
 
+            <!--
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+            -->
+        </activity>
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".LogInActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!--<intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".CreateWorkoutSelectExercisesActivity"
@@ -68,10 +83,13 @@
             android:name=".BusyScheduleWorkoutActivity"
             android:exported="true">
 
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity> <!-- FB API -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -92,12 +110,11 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity>
-
-        <!--FB API SHARING OF STREAK-->
-        <provider android:authorities="com.facebook.app.FacebookContentProvider1681233308875292"
+        </activity> <!-- FB API SHARING OF STREAK -->
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider1681233308875292"
+            android:exported="true" />
     </application>
 
 </manifest>

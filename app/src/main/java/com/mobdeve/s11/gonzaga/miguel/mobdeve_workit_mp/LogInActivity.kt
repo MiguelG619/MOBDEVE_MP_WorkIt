@@ -23,6 +23,25 @@ class LogInActivity : AppCompatActivity() {
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+
+        binding!!.mcvLogin.setOnClickListener {
+            if (isUserInputValid() === true) {
+
+            val gotoHomeActivity  = Intent(applicationContext, StreakActivity::class.java)
+            //Passing data to from one page to another or in this case a string based on the name of the user
+            //  gotoHomeActivity.putExtra("firstNameExtra", username)
+            startActivity(gotoHomeActivity)
+            // Destroys the originating activity to prevent hackers
+            finish()
+            }
+        }
+
+        binding!!.tvDontHaveAc.setOnClickListener {
+            val gotoRegisterActivity  = Intent(applicationContext, RegisterActivity::class.java)
+            startActivity(gotoRegisterActivity)
+            finish()
+        }
+
         var fbLogIn = binding!!.btnFBLogIn
 
         callbackManager = CallbackManager.Factory.create()
@@ -69,6 +88,24 @@ class LogInActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    fun isUserInputValid(): Boolean {
+        var valid: Boolean = true
+        // Check if edit text is empty and valid --> valid not yet coded
+       if (binding!!.edtEmail.text.toString().trim().isEmpty()) {
+           binding!!.edtEmail.error = "Please enter your correct email address."
+           valid = false
+       }
+
+        // Check if edit text is empty and valid --> valid not yet coded
+        if (binding!!.edtPwd.text.toString().trim().isEmpty()) {
+            binding!!.edtPwd.error = "Please enter your correct password."
+            valid = false
+        }
+
+
+        return valid
     }
 
 

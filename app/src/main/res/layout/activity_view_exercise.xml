@@ -198,7 +198,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_navigation"
             android:background="@color/white"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="labeled"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
