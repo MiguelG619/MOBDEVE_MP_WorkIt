@@ -1,10 +1,12 @@
 package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityHomeBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -18,7 +20,14 @@ class HomeActivity : AppCompatActivity() {
         var firstNameExtra = intent.getStringExtra("firstNameExtra")
         Log.i("Home Activity", " Username from Extra: $firstNameExtra")
 
-        /*binding!!.tvUsername.text = "Hello, $firstNameExtra"*/
+        val c: Date = Calendar.getInstance().getTime()
+
+        val df = SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault())
+        val formattedDate: String = df.format(c)
+
+        binding!!.tvDate.text = formattedDate
+
+        binding!!.tvUsername.text = "Hello, $firstNameExtra"
         var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
 }

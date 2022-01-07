@@ -271,7 +271,9 @@
                 android:text="Your personal information will be collected as part of the identity verification process to prevent identity theft or fraud, and for the government to be able to reach you.."
                 android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/edt_cpwd"
-                tools:layout_editor_absoluteX="25dp" />
+                tools:layout_editor_absoluteX="25dp"
+                android:focusableInTouchMode="true"
+                android:focusable="true" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_continue"
