@@ -52,7 +52,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
             finish()
         }
 
-        var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
     fun populateList() {
@@ -64,7 +64,9 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     }
 
     override fun onLoadClick(position: Int) {
-        TODO("Not yet implemented")
+        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        startActivity(gotoViewExerciseActivity)
+        finish()
     }
 
 }

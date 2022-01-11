@@ -14,7 +14,7 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusy
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 
 
-class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
+class BurstWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
     lateinit var binding: ActivityBusyScheduleWorkoutBinding
     var exerciseAdapter: ExerciseAdapter? = null
     var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
@@ -56,7 +56,7 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
     }
 
     fun populateList() {
-        exerciseList = workoutDAO.getBusyWorkoutExercises()!!
+        exerciseList = workoutDAO.getBurstWorkoutExercises()!!
     }
 
     override fun onDeleteClick(position: Int) {

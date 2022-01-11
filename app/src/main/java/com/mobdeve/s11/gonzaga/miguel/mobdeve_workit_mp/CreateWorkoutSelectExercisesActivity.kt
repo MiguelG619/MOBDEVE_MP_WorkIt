@@ -30,7 +30,7 @@ class CreateWorkoutSelectExercisesActivity : AppCompatActivity(), ExerciseAdapte
             false)
         binding!!.rvExerciseList.adapter = exerciseAdapter
 
-        var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
     fun populateList() {

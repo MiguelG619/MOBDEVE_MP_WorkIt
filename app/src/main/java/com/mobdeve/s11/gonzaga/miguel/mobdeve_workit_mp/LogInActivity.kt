@@ -27,7 +27,7 @@ class LogInActivity : AppCompatActivity() {
         binding!!.mcvLogin.setOnClickListener {
             if (isUserInputValid() === true) {
 
-            val gotoHomeActivity  = Intent(applicationContext, StreakActivity::class.java)
+            val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
             //Passing data to from one page to another or in this case a string based on the name of the user
             //  gotoHomeActivity.putExtra("firstNameExtra", username)
             startActivity(gotoHomeActivity)
@@ -48,7 +48,6 @@ class LogInActivity : AppCompatActivity() {
         fbLogIn.setPermissions(Arrays.asList("user_friends"))
 
         // Callback registration
-        // Callback registration
         fbLogIn.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
             override fun onSuccess(result: LoginResult?) {
                 val graphRequest = GraphRequest.newMeRequest(result?.accessToken) { obj, response ->
@@ -59,7 +58,7 @@ class LogInActivity : AppCompatActivity() {
                             Log.d("facebookdata", obj.getString("name"))
                             Log.d("facebookdata", firstName)
 
-                            val gotoHomeActivity  = Intent(applicationContext, StreakActivity::class.java)
+                            val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
                             //Passing data to from one page to another or in this case a string
                             gotoHomeActivity.putExtra("firstNameExtra", firstName)
                             startActivity(gotoHomeActivity)

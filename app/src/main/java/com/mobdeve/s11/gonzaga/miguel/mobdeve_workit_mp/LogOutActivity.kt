@@ -18,7 +18,7 @@ class LogOutActivity : AppCompatActivity() {
         binding = ActivityLogOutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_logout)
+        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_logout)
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 

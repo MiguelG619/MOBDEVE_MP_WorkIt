@@ -19,7 +19,7 @@ class AddExerciseToWorkoutActivity : AppCompatActivity() {
         binding = ActivityAddExerciseToWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        var navbar = Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
         binding!!.tvAdd.setOnClickListener {
             val gotoCreateWorkoutActivity =
