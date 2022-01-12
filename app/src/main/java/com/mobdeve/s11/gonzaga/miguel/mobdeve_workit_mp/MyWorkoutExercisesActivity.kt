@@ -1,55 +1,78 @@
 package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusyScheduleWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutExercisesBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 
+
 class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
-    // Set what xml file you want to access
-    var binding: ActivityMyWorkoutExercisesBinding? = null
-    // One responsible for populating the userList
+    lateinit var binding: ActivityMyWorkoutExercisesBinding
     var exerciseAdapter: ExerciseAdapter? = null
-    // Content of the data
     var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
-
-
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyWorkoutExercisesBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
 
 
+
+        // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()
-        // populates the exercise adapter
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
-        // When using an adapter you can set the layout manager
-        // Grid or linear layout pwede gamitin
-        //Makes it scrollable if there are many content
-        binding!!.rvWorkoutList.layoutManager = LinearLayoutManager(applicationContext,
+        binding.rvExercises.adapter = exerciseAdapter
+        binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
 
-        binding!!.rvWorkoutList.adapter = exerciseAdapter
+
+        binding.tvStart.setOnClickListener {
+            val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
+            startActivity(gotoRunningExerciseActivity)
+        }
+
+        binding. ivBack.setOnClickListener {
+            // Load to Home
+            val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
+            startActivity(gotoHomeActivity)
+        }
+
+
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+
+
     }
 
     fun populateList() {
-        exerciseList = workoutDAO.getMyWorkoutExercises(0)!!
-    }
-
-    override fun onLoadClick(position: Int) {
-        TODO("Not yet implemented")
+        exerciseList = workoutDAO.getBusyWorkoutExercises()!!
     }
 
     override fun onDeleteClick(position: Int) {
         TODO("Not yet implemented")
     }
+
+    fun populateExerciseData() {
+
+    }
+
+    override fun onLoadClick(position: Int) {
+        // Send data first based on the position
+        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        startActivity(gotoViewExerciseActivity)
+
+    }
+
 
 }

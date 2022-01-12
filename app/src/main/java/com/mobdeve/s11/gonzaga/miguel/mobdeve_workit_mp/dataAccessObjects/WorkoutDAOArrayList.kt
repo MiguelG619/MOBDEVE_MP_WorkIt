@@ -16,7 +16,8 @@ class WorkoutDAOArrayList() {
     init {
         var burstExerciseList = ArrayList<ExerciseModel?>()
         var busyExerciseList = ArrayList<ExerciseModel?>()
-        var myOwnExerciseList = ArrayList<ExerciseModel?>()
+        var myOwnExerciseList1 = ArrayList<ExerciseModel?>()
+        var myOwnExerciseList2 = ArrayList<ExerciseModel?>()
         // Burst Workout
             var i = 0
             while (i < 5) {
@@ -43,6 +44,34 @@ class WorkoutDAOArrayList() {
                 j++
             }
             busyWorkout = WorkoutModel("Busy Workout", busyExerciseList, busyExerciseList.size)
+
+        // My workout
+        var k = 0
+        while (k < 5) {
+            myOwnExerciseList1.add(
+                ExerciseModel( "Jumping Jacks" ,
+                    "A conditioning exercise performed from a standing position " +
+                            "by jumping to a position with legs spread and arms raised and then " +
+                            "to the original position.",
+                    30, 3, 10)
+            )
+            k++
+        }
+        myWorkoutList.add(WorkoutModel("My Workout 1", myOwnExerciseList1, myOwnExerciseList1.size))
+
+        var l = 0
+        while (l < 5) {
+            myOwnExerciseList2.add(
+                ExerciseModel( "Jumping Jacks" ,
+                    "A conditioning exercise performed from a standing position " +
+                            "by jumping to a position with legs spread and arms raised and then " +
+                            "to the original position.",
+                    30, 3, 10)
+            )
+            l++
+        }
+        myWorkoutList.add(WorkoutModel("My Workout 2", myOwnExerciseList2, myOwnExerciseList2.size))
+
 
         // Own workouts
             /*var k = 0

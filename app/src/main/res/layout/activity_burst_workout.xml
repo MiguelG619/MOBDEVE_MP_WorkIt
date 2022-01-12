@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".BusyScheduleWorkoutActivity"
+    tools:context=".BurstWorkoutActivity"
     android:id="@+id/burstWorkout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +51,7 @@
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="16dip"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Burst Workout"
+                        android:text="1 Workout"
                         android:textColor="@color/white"
                         android:textSize="22dp"
                         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"

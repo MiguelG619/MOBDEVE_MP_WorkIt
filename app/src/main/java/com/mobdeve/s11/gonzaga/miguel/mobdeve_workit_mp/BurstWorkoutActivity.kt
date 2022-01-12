@@ -26,9 +26,6 @@ class BurstWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLis
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-
-
-        // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding.rvExercises.adapter = exerciseAdapter
@@ -40,14 +37,13 @@ class BurstWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLis
         binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
             startActivity(gotoRunningExerciseActivity)
-            finish()
         }
 
         binding. ivBack.setOnClickListener {
             // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
-            finish()
+
         }
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
@@ -71,7 +67,6 @@ class BurstWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLis
         // Send data first based on the position
         var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
         startActivity(gotoViewExerciseActivity)
-        finish()
     }
 
 

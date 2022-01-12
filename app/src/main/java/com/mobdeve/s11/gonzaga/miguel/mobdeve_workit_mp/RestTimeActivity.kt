@@ -21,7 +21,7 @@ class RestTimeActivity : AppCompatActivity() {
         // Get timer duration from workout exercise
         // 20seconds
         // Convert minute seconds to seconds
-        var duration: Long = TimeUnit.SECONDS.toMillis(65)
+        var duration: Long = TimeUnit.SECONDS.toMillis(5)
 
         // Initialize Timer Countdown
         object : CountDownTimer(duration, 1000) {

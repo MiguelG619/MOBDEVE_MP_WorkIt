@@ -69,32 +69,19 @@
                         app:srcCompat="@drawable/ic_forward" />
 
                     <TextView
-                        android:id="@+id/tv_days"
+                        android:id="@+id/tv_workout_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginBottom="48dip"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="7 days"
+                        android:text="2 Workouts"
                         android:textColor="@color/white"
                         android:textSize="12dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_exercise_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="24dp"
-                        android:layout_marginBottom="48dip"
-                        android:alpha=".6"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="4 Exercises"
-                        android:textColor="@color/white"
-                        android:textSize="12dp"
-                        android:visibility="invisible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -137,7 +124,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_navigation"
             android:background="@color/white"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="labeled"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -14,8 +14,10 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
     // Set what xml file you want to access
     var binding: ActivityCreateWorkoutBinding? = null
+
     // One responsible for populating the userList
     var exerciseAdapter: ExerciseAdapter? = null
+
     // Content of the data
     lateinit var exerciseList: ArrayList<ExerciseModel?>
     var exerciseDAO: ExerciseDAOArrayList = ExerciseDAOArrayList()
@@ -25,24 +27,24 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
         binding = ActivityCreateWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+
         populateList()
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
+        binding!!.rvExerciseList.adapter = exerciseAdapter
         binding!!.rvExerciseList.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
 
         binding!!.tvAddExercise.setOnClickListener {
-            val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
-            startActivity(gotoRunningExerciseActivity)
 
-            finish()
+
         }
 
         binding!!.tvDone.setOnClickListener {
-          // Add popup
+            // Add popup
         }
 
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
     fun populateList() {
         exerciseList = exerciseDAO.getExercises()!!
@@ -54,6 +56,8 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
     }
 
     override fun onLoadClick(position: Int) {
-        TODO("Not yet implemented")
+        // Send data first based on the position
+        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        startActivity(gotoViewExerciseActivity)
     }
 }

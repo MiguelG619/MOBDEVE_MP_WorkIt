@@ -17,11 +17,9 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     // One responsible for populating the userList
     var workoutAdapter: WorkoutAdapter? = null
     // Content of the data
-    var workoutList = ArrayList<WorkoutModel>()
+    lateinit var workoutList: ArrayList<WorkoutModel?>
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
 
-
-    var exerciseList = ArrayList<ExerciseModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,14 +47,21 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         binding!!.tvCreate.setOnClickListener {
             val gotoCreateWorkoutActivity = Intent(applicationContext, CreateWorkoutActivity::class.java)
             startActivity(gotoCreateWorkoutActivity)
-            finish()
+
+        }
+
+        binding!!.ivBack.setOnClickListener {
+            // Load to Home
+            val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
+            startActivity(gotoHomeActivity)
+
         }
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
     fun populateList() {
-        workoutDAO.getMyWorkouts()
+        workoutList = workoutDAO.getMyWorkouts()!!
     }
 
     override fun onDeleteClick(position: Int) {
@@ -64,9 +69,9 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     }
 
     override fun onLoadClick(position: Int) {
-        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
-        startActivity(gotoViewExerciseActivity)
-        finish()
+        // sned workout info
+        var gotoMyWorkoutExercisesActivity = Intent(applicationContext, MyWorkoutExercisesActivity::class.java)
+        startActivity(gotoMyWorkoutExercisesActivity)
     }
 
 }

@@ -9,7 +9,7 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 // Populates the rows
 class WorkoutAdapter(
-    private var myWorkoutList: ArrayList<WorkoutModel>,
+    private var myWorkoutList: ArrayList<WorkoutModel?>,
     private val listener: OnItemClickListener
 
 )

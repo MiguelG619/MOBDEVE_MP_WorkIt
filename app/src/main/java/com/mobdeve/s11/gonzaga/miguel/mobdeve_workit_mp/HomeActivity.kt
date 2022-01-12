@@ -18,8 +18,8 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val firstNameExtra = intent.getStringExtra("firstNameExtra")
-        Log.i("Home Activity", " Username from Extra: $firstNameExtra")*/
+        val firstNameExtra = intent.getStringExtra("firstNameExtra")
+        binding!!.tvUsername.text = "Hello, $firstNameExtra"
 
         val c: Date = Calendar.getInstance().time
 
@@ -28,24 +28,21 @@ class HomeActivity : AppCompatActivity() {
 
         binding.tvDate.text = formattedDate
 
-        //binding!!.tvUsername.text = "Hello, $firstNameExtra"
+
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
 
          binding.mcvRowBurst.setOnClickListener {
              val gotoBurstActivity = Intent(applicationContext, BurstWorkoutActivity::class.java)
              startActivity(gotoBurstActivity)
-             finish()
          }
          binding.mcvRowBusy.setOnClickListener {
              val gotoBusyScheduleWorkoutActivityActivity = Intent(applicationContext, BusyScheduleWorkoutActivity::class.java)
              startActivity(gotoBusyScheduleWorkoutActivityActivity)
-             finish()
          }
         binding.mcvRowMyWorkout.setOnClickListener {
             val gotoMyWorkoutActivityActivity = Intent(applicationContext, MyWorkoutActivity::class.java)
             startActivity(gotoMyWorkoutActivityActivity)
-            finish()
         }
     }
 }

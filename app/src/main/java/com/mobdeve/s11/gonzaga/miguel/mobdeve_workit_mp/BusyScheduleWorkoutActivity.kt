@@ -40,14 +40,13 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
         binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
             startActivity(gotoRunningExerciseActivity)
-            finish()
         }
 
         binding. ivBack.setOnClickListener {
             // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
-            finish()
+
         }
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
@@ -71,7 +70,6 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
         // Send data first based on the position
         var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
         startActivity(gotoViewExerciseActivity)
-        finish()
     }
 
 
