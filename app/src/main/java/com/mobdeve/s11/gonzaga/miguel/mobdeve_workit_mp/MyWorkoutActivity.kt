@@ -8,7 +8,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.WorkoutAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutBinding
-import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListener {
@@ -70,7 +69,9 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
 
     override fun onLoadClick(position: Int) {
         // sned workout info
+
         var gotoMyWorkoutExercisesActivity = Intent(applicationContext, MyWorkoutExercisesActivity::class.java)
+        gotoMyWorkoutExercisesActivity.putExtra("position", position)
         startActivity(gotoMyWorkoutExercisesActivity)
     }
 

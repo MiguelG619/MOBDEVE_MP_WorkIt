@@ -9,29 +9,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.WorkoutAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusyScheduleWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 
-class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
+class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListener {
     lateinit var binding: ActivityBusyScheduleWorkoutBinding
-    var exerciseAdapter: ExerciseAdapter? = null
-    var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
+    var workoutAdapter: WorkoutAdapter? = null
+    lateinit var workoutList: ArrayList<WorkoutModel?>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        setContentView(binding.root)
 
 
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()
-        exerciseAdapter = ExerciseAdapter(exerciseList, this)
-        binding.rvExercises.adapter = exerciseAdapter
+        workoutAdapter = WorkoutAdapter(workoutList, this)
+        binding.rvExercises.adapter = workoutAdapter
         binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
@@ -55,7 +58,7 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
     }
 
     fun populateList() {
-        exerciseList = workoutDAO.getBusyWorkoutExercises()!!
+        workoutList = workoutDAO.getBusyWorkouts()!!
     }
 
     override fun onDeleteClick(position: Int) {
@@ -68,8 +71,10 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemC
 
     override fun onLoadClick(position: Int) {
         // Send data first based on the position
-        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
-        startActivity(gotoViewExerciseActivity)
+        var gotoBusyWorkoutExercisesActivity =
+            Intent(applicationContext, BusyWorkoutExercisesActivity::class.java)
+        gotoBusyWorkoutExercisesActivity.putExtra("position", position)
+        startActivity(gotoBusyWorkoutExercisesActivity)
     }
 
 

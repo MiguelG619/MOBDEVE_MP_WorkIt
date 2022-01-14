@@ -15,6 +15,7 @@ class WorkoutDoneActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tvDone.setOnClickListener {
+            (this.application as GlobalVariables).streak++
             var gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
             finish()

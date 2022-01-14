@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".BurstWorkoutActivity"
+    tools:context=".BusyWorkoutExercisesActivity"
     android:id="@+id/burstWorkout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,7 +70,7 @@
                         app:srcCompat="@drawable/ic_forward" />
 
                     <TextView
-                        android:id="@+id/tv_days"
+                        android:id="@+id/tv_exercise_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
@@ -81,6 +81,8 @@
                         android:textSize="12dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

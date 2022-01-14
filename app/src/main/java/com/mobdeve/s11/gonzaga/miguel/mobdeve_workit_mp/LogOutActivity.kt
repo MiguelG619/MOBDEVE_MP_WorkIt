@@ -23,6 +23,7 @@ class LogOutActivity : AppCompatActivity() {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         binding.btnYes.setOnClickListener {
+            (this.application as GlobalVariables).streak = 0
             //  Logout the user first
             // Logout FB
             LoginManager.getInstance().logOut();

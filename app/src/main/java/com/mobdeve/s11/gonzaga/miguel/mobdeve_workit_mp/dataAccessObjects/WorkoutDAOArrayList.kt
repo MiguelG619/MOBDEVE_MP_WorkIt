@@ -5,8 +5,8 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 class WorkoutDAOArrayList() {
-    lateinit var burstWorkout: WorkoutModel
-    lateinit var busyWorkout: WorkoutModel
+    var burstWorkout = ArrayList<WorkoutModel?>()
+    var busyWorkout = ArrayList<WorkoutModel?>()
     var myWorkoutList = ArrayList<WorkoutModel?>()
 
 
@@ -30,9 +30,14 @@ class WorkoutDAOArrayList() {
                 )
                 i++
             }
-            burstWorkout = WorkoutModel("Burst Workout", burstExerciseList, burstExerciseList.size)
+        var j = 0
+            while (j < 7) {
+                burstWorkout.add(WorkoutModel("Day ${j+1}", burstExerciseList, burstExerciseList.size))
+                j++
+            }
+
        // Busy workout
-            var j = 0
+        j = 0
             while (j < 5) {
                 busyExerciseList.add(
                     ExerciseModel( "Jumping Jacks" ,
@@ -43,7 +48,11 @@ class WorkoutDAOArrayList() {
                 )
                 j++
             }
-            busyWorkout = WorkoutModel("Busy Workout", busyExerciseList, busyExerciseList.size)
+            j = 0
+            while (j < 7) {
+                busyWorkout.add(WorkoutModel("Day ${j+1}", busyExerciseList, busyExerciseList.size))
+                j++
+            }
 
         // My workout
         var k = 0
@@ -98,9 +107,17 @@ class WorkoutDAOArrayList() {
 
     fun getMyWorkoutExercises(workoutId: Int): ArrayList<ExerciseModel?>? = myWorkoutList[workoutId]?.exercises
 
-    fun getBurstWorkoutExercises() : ArrayList<ExerciseModel?>? = burstWorkout.exercises
+    fun getBurstWorkouts() : ArrayList<WorkoutModel?>? = burstWorkout
 
-    fun getBusyWorkoutExercises() : ArrayList<ExerciseModel?>? = busyWorkout.exercises
+    fun getBurstWorkout(workoutId: Int): WorkoutModel? = burstWorkout[workoutId]
+
+    fun getBurstWorkoutExercises(workoutId: Int): ArrayList<ExerciseModel?>? = burstWorkout[workoutId]?.exercises
+
+    fun getBusyWorkouts() : ArrayList<WorkoutModel?>? = busyWorkout
+
+    fun getBusyWorkout(workoutId: Int): WorkoutModel? = busyWorkout[workoutId]
+
+    fun getBusyWorkoutExercises(workoutId: Int): ArrayList<ExerciseModel?>? = busyWorkout[workoutId]?.exercises
 
 
     fun updateExercise(workout: WorkoutModel?): Int {

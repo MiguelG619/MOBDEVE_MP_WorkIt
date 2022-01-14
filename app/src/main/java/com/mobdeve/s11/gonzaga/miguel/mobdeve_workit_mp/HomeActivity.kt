@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityHomeBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -31,6 +32,8 @@ class HomeActivity : AppCompatActivity() {
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
+        val myWorkoutsNumber = WorkoutDAOArrayList().myWorkoutList.size
+        binding.tvDaysMyWorkout.text = "${myWorkoutsNumber.toString()} Workouts"
 
          binding.mcvRowBurst.setOnClickListener {
              val gotoBurstActivity = Intent(applicationContext, BurstWorkoutActivity::class.java)

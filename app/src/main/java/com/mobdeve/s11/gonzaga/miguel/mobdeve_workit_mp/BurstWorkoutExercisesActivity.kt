@@ -2,33 +2,39 @@ package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
-import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.WorkoutAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBurstWorkoutExercisesBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusyScheduleWorkoutBinding
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutExercisesBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
-import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 
-class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListener {
-    lateinit var binding: ActivityBusyScheduleWorkoutBinding
+class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
+    lateinit var binding: ActivityBurstWorkoutExercisesBinding
+    var exerciseAdapter: ExerciseAdapter? = null
+    var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
-    var workoutAdapter: WorkoutAdapter? = null
-    lateinit var workoutList: ArrayList<WorkoutModel?>
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        binding = ActivityBurstWorkoutExercisesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+
+
+        // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()
-        workoutAdapter = WorkoutAdapter(workoutList, this)
-        binding.rvExercises.adapter = workoutAdapter
+        exerciseAdapter = ExerciseAdapter(exerciseList, this)
+        binding.rvExercises.adapter = exerciseAdapter
         binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
@@ -43,8 +49,8 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
             // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
-
         }
+
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
@@ -52,7 +58,24 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
     }
 
     fun populateList() {
-        workoutList = workoutDAO.getBurstWorkouts()!!
+        // get adapter position
+        val position = intent.getIntExtra("position", 10)
+        Toast.makeText(this, position.toString(),
+            Toast.LENGTH_LONG).show()
+        exerciseList = workoutDAO.getBurstWorkoutExercises(position)!!
+        updateText(position)
+
+    }
+
+    fun updateText(position: Int) {
+        val workoutName = workoutDAO.burstWorkout[position]!!.workoutName
+        binding.tvTitle.text = workoutName
+        val numExercises = workoutDAO.burstWorkout[position]!!.numExercises
+        if (numExercises <= 1) {
+            binding.tvExerciseCount.text = "${numExercises} Exercise"
+        } else {
+            binding.tvExerciseCount.text = "${numExercises} Exercises"
+        }
     }
 
     override fun onDeleteClick(position: Int) {
@@ -65,10 +88,9 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
 
     override fun onLoadClick(position: Int) {
         // Send data first based on the position
+        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        startActivity(gotoViewExerciseActivity)
 
-        var gotoBurstWorkoutExercisesActivity = Intent(applicationContext, BurstWorkoutExercisesActivity::class.java)
-        gotoBurstWorkoutExercisesActivity.putExtra("position", position)
-        startActivity(gotoBurstWorkoutExercisesActivity)
     }
 
 

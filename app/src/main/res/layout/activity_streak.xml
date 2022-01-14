@@ -67,7 +67,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
-            android:text="Consecutive days of being a healthy and better person."
+            android:text="Number of days of being a healthy and better person."
             android:textColor="@color/white"
             android:textSize="20sp"
             android:gravity="center"

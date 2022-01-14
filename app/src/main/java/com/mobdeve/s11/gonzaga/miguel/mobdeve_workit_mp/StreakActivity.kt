@@ -34,7 +34,9 @@ class StreakActivity : AppCompatActivity() {
         callbackManager = CallbackManager.Factory.create()
         shareDialog = ShareDialog(this)
 
-        /*binding.btnShareLink.setOnClickListener {
+        binding.tvNumber.text = (this.application as GlobalVariables).streak.toString()
+
+        binding.btnShareLink.setOnClickListener {
             //startForResult.launch(Intent(this, AnotherActivity::class.java))
             var bitmap = screenShot()
             binding.btnShareLink.visibility = View.VISIBLE
@@ -49,7 +51,7 @@ class StreakActivity : AppCompatActivity() {
                 .build()
 
             shareDialog.show(sharePhotoContent)
-        }*/
+        }
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_streak)
 
@@ -58,9 +60,7 @@ class StreakActivity : AppCompatActivity() {
     }
 
 
-
-
-   /* fun screenShot(): Bitmap? {
+    fun screenShot(): Bitmap? {
         binding.btnShareLink.visibility = View.GONE
         binding.bottomNavigation.visibility = View.GONE
         var view = window.decorView.rootView
@@ -71,7 +71,7 @@ class StreakActivity : AppCompatActivity() {
         val canvas = Canvas(bitmap)
         view.draw(canvas)
         return bitmap
-    }*/
+    }
 
 
 

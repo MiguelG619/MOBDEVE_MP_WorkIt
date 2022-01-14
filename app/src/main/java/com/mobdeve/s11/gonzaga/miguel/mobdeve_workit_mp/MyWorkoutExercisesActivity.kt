@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,8 +57,27 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
     }
 
     fun populateList() {
-        exerciseList = workoutDAO.getBusyWorkoutExercises()!!
+        // get adapter position
+        val position = intent.getIntExtra("position", 10)
+        Toast.makeText(this, position.toString(),
+            Toast.LENGTH_LONG).show()
+        exerciseList = workoutDAO.getMyWorkoutExercises(position)!!
+        updateText(position)
+
     }
+
+    fun updateText(position: Int) {
+        val workoutName = workoutDAO.myWorkoutList[position]!!.workoutName
+        binding.tvWorkoutTitle.text = workoutName
+        val numExercises = workoutDAO.myWorkoutList[position]!!.numExercises
+        if (numExercises <= 1) {
+            binding.tvExerciseCount.text = "${numExercises} Exercise"
+        } else {
+            binding.tvExerciseCount.text = "${numExercises} Exercises"
+        }
+        
+    }
+
 
     override fun onDeleteClick(position: Int) {
         TODO("Not yet implemented")
