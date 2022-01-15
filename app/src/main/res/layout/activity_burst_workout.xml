@@ -95,23 +95,8 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/tv_start"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintTop_toBottomOf="@id/mcv_header" />
-
-        <TextView
-            android:id="@+id/tv_start"
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:layout_marginHorizontal="16dip"
-            android:background="@drawable/card_back_green"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:paddingVertical="10dp"
-            android:text="Start"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toTopOf="@id/view" />
 
         <View
             android:id="@+id/view"

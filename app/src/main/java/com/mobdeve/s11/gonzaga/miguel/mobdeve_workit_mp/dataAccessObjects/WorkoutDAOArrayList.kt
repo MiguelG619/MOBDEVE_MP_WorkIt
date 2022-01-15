@@ -20,13 +20,20 @@ class WorkoutDAOArrayList() {
         var myOwnExerciseList2 = ArrayList<ExerciseModel?>()
         // Burst Workout
             var i = 0
-            while (i < 5) {
+            while (i < 2) {
                 burstExerciseList.add(
                     ExerciseModel( "Jumping Jacks" ,
                         "A conditioning exercise performed from a standing position " +
                                 "by jumping to a position with legs spread and arms raised and then " +
                                 "to the original position.",
                         30, 3, 10)
+                )
+                burstExerciseList.add(
+                    ExerciseModel( "Jogging in place" ,
+                        "A conditioning exercise performed from a standing position " +
+                                "by jumping to a position with legs spread and arms raised and then " +
+                                "to the original position.",
+                        30, 2, 5)
                 )
                 i++
             }

@@ -75,7 +75,7 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
         } else {
             binding.tvExerciseCount.text = "${numExercises} Exercises"
         }
-        
+
     }
 
 

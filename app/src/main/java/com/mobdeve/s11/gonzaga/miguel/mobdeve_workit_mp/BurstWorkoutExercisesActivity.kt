@@ -2,6 +2,7 @@ package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +23,7 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
     var exerciseAdapter: ExerciseAdapter? = null
     var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
+    var position: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,12 +44,20 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
 
         binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
+            val args = Bundle()
+            args.putSerializable("ARRAYLIST", exerciseList)
+            gotoRunningExerciseActivity.putExtra("BUNDLE", args)
+            gotoRunningExerciseActivity.putExtra("position", position)
+            val workoutName = "Burst Workout"
+            gotoRunningExerciseActivity.putExtra("workoutName", workoutName)
+            gotoRunningExerciseActivity.putExtra("exerciseNumber", 0)
             startActivity(gotoRunningExerciseActivity)
         }
 
         binding. ivBack.setOnClickListener {
-            // Load to Home
+            // Load to Hom
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
+
             startActivity(gotoHomeActivity)
         }
 
@@ -59,9 +69,7 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
 
     fun populateList() {
         // get adapter position
-        val position = intent.getIntExtra("position", 10)
-        Toast.makeText(this, position.toString(),
-            Toast.LENGTH_LONG).show()
+        position = intent.getIntExtra("position", 10)
         exerciseList = workoutDAO.getBurstWorkoutExercises(position)!!
         updateText(position)
 

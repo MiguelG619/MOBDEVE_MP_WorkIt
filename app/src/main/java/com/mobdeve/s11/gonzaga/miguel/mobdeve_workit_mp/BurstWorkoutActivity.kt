@@ -34,11 +34,6 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
             false)
 
 
-        binding.tvStart.setOnClickListener {
-            val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
-            startActivity(gotoRunningExerciseActivity)
-        }
-
         binding. ivBack.setOnClickListener {
             // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
