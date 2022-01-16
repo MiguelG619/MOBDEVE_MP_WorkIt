@@ -1,6 +1,7 @@
 package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects
 
 import android.util.Log
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.R
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
@@ -19,42 +20,53 @@ class WorkoutDAOArrayList() {
         var myOwnExerciseList1 = ArrayList<ExerciseModel?>()
         var myOwnExerciseList2 = ArrayList<ExerciseModel?>()
         // Burst Workout
-            var i = 0
-            while (i < 2) {
+
                 burstExerciseList.add(
                     ExerciseModel( "Jumping Jacks" ,
                         "A conditioning exercise performed from a standing position " +
                                 "by jumping to a position with legs spread and arms raised and then " +
                                 "to the original position.",
-                        30, 3, 10)
+                        R.drawable.jumping_jacks,
+                        30, 2, 5)
                 )
                 burstExerciseList.add(
                     ExerciseModel( "Jogging in place" ,
-                        "A conditioning exercise performed from a standing position " +
-                                "by jumping to a position with legs spread and arms raised and then " +
-                                "to the original position.",
-                        30, 2, 5)
+                        "Lift your right arm and left foot at the same time." +
+                                "Raise your knee as high as your hips." +
+                                "Then switch to the opposite foot, quickly lifting your right foot to hip height." +
+                                "At the same time, move your right arm back and your left arm forward and up." +
+                                "Continue these movements.",
+                        R.drawable.jogging,
+                        30, 2, 3)
                 )
-                i++
-            }
+
         var j = 0
             while (j < 7) {
                 burstWorkout.add(WorkoutModel("Day ${j+1}", burstExerciseList, burstExerciseList.size))
                 j++
             }
 
-       // Busy workout
-        j = 0
-            while (j < 5) {
+
                 busyExerciseList.add(
                     ExerciseModel( "Jumping Jacks" ,
                         "A conditioning exercise performed from a standing position " +
                                 "by jumping to a position with legs spread and arms raised and then " +
                                 "to the original position.",
-                        30, 3, 10)
+                        R.drawable.jumping_jacks,
+                        30, 2, 5)
                 )
-                j++
-            }
+
+                busyExerciseList.add(
+                    ExerciseModel( "Jogging in place" ,
+                        "Lift your right arm and left foot at the same time." +
+                                "Raise your knee as high as your hips." +
+                                "Then switch to the opposite foot, quickly lifting your right foot to hip height." +
+                                "At the same time, move your right arm back and your left arm forward and up." +
+                                "Continue these movements.",
+                        R.drawable.jogging,
+                        30, 2, 3)
+                )
+
             j = 0
             while (j < 7) {
                 busyWorkout.add(WorkoutModel("Day ${j+1}", busyExerciseList, busyExerciseList.size))
@@ -62,20 +74,29 @@ class WorkoutDAOArrayList() {
             }
 
         // My workout
-        var k = 0
-        while (k < 5) {
+
             myOwnExerciseList1.add(
                 ExerciseModel( "Jumping Jacks" ,
                     "A conditioning exercise performed from a standing position " +
                             "by jumping to a position with legs spread and arms raised and then " +
                             "to the original position.",
-                    30, 3, 10)
+                    R.drawable.jumping_jacks,
+                    30, 2, 5)
             )
-            k++
-        }
+        myOwnExerciseList1.add(
+            ExerciseModel( "Jogging in place" ,
+                "Lift your right arm and left foot at the same time." +
+                        "Raise your knee as high as your hips." +
+                        "Then switch to the opposite foot, quickly lifting your right foot to hip height." +
+                        "At the same time, move your right arm back and your left arm forward and up." +
+                        "Continue these movements.",
+                R.drawable.jogging,
+                30, 2, 3)
+        )
+
         myWorkoutList.add(WorkoutModel("My Workout 1", myOwnExerciseList1, myOwnExerciseList1.size))
 
-        var l = 0
+        /*var l = 0
         while (l < 5) {
             myOwnExerciseList2.add(
                 ExerciseModel( "Jumping Jacks" ,
@@ -86,7 +107,7 @@ class WorkoutDAOArrayList() {
             )
             l++
         }
-        myWorkoutList.add(WorkoutModel("My Workout 2", myOwnExerciseList2, myOwnExerciseList2.size))
+        myWorkoutList.add(WorkoutModel("My Workout 2", myOwnExerciseList2, myOwnExerciseList2.size))*/
 
 
         // Own workouts

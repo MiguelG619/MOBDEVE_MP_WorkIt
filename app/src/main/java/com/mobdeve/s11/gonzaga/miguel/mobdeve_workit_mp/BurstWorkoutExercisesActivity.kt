@@ -2,19 +2,13 @@ package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBurstWorkoutExercisesBinding
-import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusyScheduleWorkoutBinding
-import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutExercisesBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 
 
@@ -24,6 +18,7 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
     var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
     var position: Int = 0
+    val workoutName = "Burst Workout"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +43,6 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
             args.putSerializable("ARRAYLIST", exerciseList)
             gotoRunningExerciseActivity.putExtra("BUNDLE", args)
             gotoRunningExerciseActivity.putExtra("position", position)
-            val workoutName = "Burst Workout"
             gotoRunningExerciseActivity.putExtra("workoutName", workoutName)
             gotoRunningExerciseActivity.putExtra("exerciseNumber", 0)
             startActivity(gotoRunningExerciseActivity)
@@ -57,10 +51,8 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
         binding. ivBack.setOnClickListener {
             // Load to Hom
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
-
             startActivity(gotoHomeActivity)
         }
-
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
@@ -90,15 +82,17 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
         TODO("Not yet implemented")
     }
 
-    fun populateExerciseData() {
 
-    }
-
-    override fun onLoadClick(position: Int) {
+    override fun onLoadClick(positionExercise: Int) {
         // Send data first based on the position
         var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        gotoViewExerciseActivity.putExtra("title", exerciseList[positionExercise]?.title)
+        gotoViewExerciseActivity.putExtra("description", exerciseList[positionExercise]?.description)
+        gotoViewExerciseActivity.putExtra("image", exerciseList[positionExercise]?.image)
+        gotoViewExerciseActivity.putExtra("reps", exerciseList[positionExercise]?.reps)
+        gotoViewExerciseActivity.putExtra("sets", exerciseList[positionExercise]?.sets)
+        gotoViewExerciseActivity.putExtra("rest", exerciseList[positionExercise]?.restTime)
         startActivity(gotoViewExerciseActivity)
-
     }
 
 

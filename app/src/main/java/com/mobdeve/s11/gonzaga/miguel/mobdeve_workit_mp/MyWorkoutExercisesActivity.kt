@@ -21,6 +21,8 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
     var exerciseAdapter: ExerciseAdapter? = null
     var exerciseList: ArrayList<ExerciseModel?> = ArrayList()
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
+    var position: Int = 0
+    val workoutName = "My Workout"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,12 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
 
         binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
+            val args = Bundle()
+            args.putSerializable("ARRAYLIST", exerciseList)
+            gotoRunningExerciseActivity.putExtra("BUNDLE", args)
+            gotoRunningExerciseActivity.putExtra("position", position)
+            gotoRunningExerciseActivity.putExtra("workoutName", workoutName)
+            gotoRunningExerciseActivity.putExtra("exerciseNumber", 0)
             startActivity(gotoRunningExerciseActivity)
         }
 
@@ -58,12 +66,9 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
 
     fun populateList() {
         // get adapter position
-        val position = intent.getIntExtra("position", 10)
-        Toast.makeText(this, position.toString(),
-            Toast.LENGTH_LONG).show()
+        position = intent.getIntExtra("position", 10)
         exerciseList = workoutDAO.getMyWorkoutExercises(position)!!
         updateText(position)
-
     }
 
     fun updateText(position: Int) {
@@ -83,16 +88,19 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
         TODO("Not yet implemented")
     }
 
-    fun populateExerciseData() {
 
-    }
-
-    override fun onLoadClick(position: Int) {
+    override fun onLoadClick(positionExercise: Int) {
         // Send data first based on the position
         var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        gotoViewExerciseActivity.putExtra("title", exerciseList[positionExercise]?.title)
+        gotoViewExerciseActivity.putExtra("description", exerciseList[positionExercise]?.description)
+        gotoViewExerciseActivity.putExtra("image", exerciseList[positionExercise]?.image)
+        gotoViewExerciseActivity.putExtra("reps", exerciseList[positionExercise]?.reps)
+        gotoViewExerciseActivity.putExtra("sets", exerciseList[positionExercise]?.sets)
+        gotoViewExerciseActivity.putExtra("rest", exerciseList[positionExercise]?.restTime)
         startActivity(gotoViewExerciseActivity)
-
     }
+
 
 
 }

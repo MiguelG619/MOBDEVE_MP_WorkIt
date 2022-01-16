@@ -19,7 +19,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:text="CONGRATULATIONS!"
             android:textColor="#DDC914"
-            android:textSize="22dp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_sets" />
@@ -32,23 +32,24 @@
             android:layout_marginTop="55dip"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:text="Completed!"
+            android:text="Busy Schedule Workout \n Day 1"
             android:textColor="#DDC914"
-            android:textSize="18dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_sets" />
 
         <TextView
-            android:id="@+id/tv_total_done"
+            android:id="@+id/tv_number_of_exercises"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dip"
             android:layout_marginTop="55dip"
             android:fontFamily="@font/poppins_bold"
-            android:text="Completed!"
+            android:text="3 Exercises Completed!"
             android:textColor="#DDC914"
-            android:textSize="22dp"
+            android:gravity="center"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_sets" />
