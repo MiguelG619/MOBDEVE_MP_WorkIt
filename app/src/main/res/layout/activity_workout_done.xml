@@ -17,9 +17,9 @@
             android:layout_marginHorizontal="16dip"
             android:layout_marginTop="55dip"
             android:fontFamily="@font/poppins_semibold"
-            android:text="CONGRATULATIONS!"
+            android:text="CONGRATULATIONS! &#128588; &#128079;"
             android:textColor="#DDC914"
-            android:textSize="25sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_sets" />
@@ -49,10 +49,25 @@
             android:text="3 Exercises Completed!"
             android:textColor="#DDC914"
             android:gravity="center"
-            android:textSize="25sp"
+            android:textSize="21sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_sets" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dip"
+            android:layout_marginTop="55dip"
+            android:fontFamily="@font/poppins_bold"
+            android:text="&#128170;  &#127941; &#x1F3C1;  "
+            android:textColor="#DDC914"
+            android:gravity="center"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_number_of_exercises" />
 
         <TextView
             android:id="@+id/tv_done"

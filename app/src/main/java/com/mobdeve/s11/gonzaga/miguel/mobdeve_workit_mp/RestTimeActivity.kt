@@ -35,14 +35,14 @@ class RestTimeActivity : AppCompatActivity() {
         val restTimeExtra = intent.getIntExtra("restTime", 0)
         exerciseNumber = intent.getIntExtra("exerciseNumber", 0)
         doneSets = intent.getIntExtra("doneSets", 1) + 1
-        Toast.makeText(this, doneSets.toString() + "doneSets rest", Toast.LENGTH_SHORT).show()
+        position = intent.getIntExtra("position", 10)
+        setWorkout()
 
 
         val restTimeLong = restTimeExtra.toLong()
 
         // Initialize timer duration
         // Get timer duration from workout exercise
-        // 20seconds
         // Convert minute seconds to seconds
         //var duration: Long = TimeUnit.SECONDS.toMillis(4)
         var duration: Long = TimeUnit.SECONDS.toMillis(restTimeLong)
@@ -99,12 +99,15 @@ class RestTimeActivity : AppCompatActivity() {
     fun goBack() {
         if (isDoneWorkout() && isDoneSet()) {
             val gotoDoneActivity = Intent(applicationContext, WorkoutDoneActivity::class.java)
+            gotoDoneActivity.putExtra("workoutName", workoutName)
+            gotoDoneActivity.putExtra("day", position+1)
+            gotoDoneActivity.putExtra("exerciseNumber", exerciseList.size)
             startActivity(gotoDoneActivity)
             finish()
         } else {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
-            position = intent.getIntExtra("position", 10)
-            setWorkout()
+
+
             gotoRunningExerciseActivity.putExtra("workoutName", workoutName)
             gotoRunningExerciseActivity.putExtra("position", position)
             gotoRunningExerciseActivity.putExtra("status", status)

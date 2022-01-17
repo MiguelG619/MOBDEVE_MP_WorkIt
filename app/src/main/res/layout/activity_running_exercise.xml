@@ -65,7 +65,7 @@
                     android:layout_marginHorizontal="16dip"
                     android:layout_marginTop="31dip"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="3 Sets"
+                    android:text="3 Out of 3 Sets Done"
                     android:textColor="@color/black"
                     android:textSize="30dp"
                     app:layout_constraintEnd_toEndOf="parent"

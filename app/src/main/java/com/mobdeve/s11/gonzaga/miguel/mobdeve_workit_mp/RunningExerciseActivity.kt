@@ -36,7 +36,7 @@ class RunningExerciseActivity : AppCompatActivity() {
         binding.imageExercise.setImageResource(exercises.get(exerciseNumber)?.image!!)
         binding.tvReps.text = "${exercises?.get(exerciseNumber)?.reps} Reps"
         var sets = exercises?.get(exerciseNumber)?.sets
-        binding.tvSets.text = "${sets} Sets"
+        binding.tvSets.text = "${doneSets} out of ${sets} Sets Done"
 
 
 

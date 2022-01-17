@@ -14,6 +14,17 @@ class WorkoutDoneActivity : AppCompatActivity() {
         binding = ActivityWorkoutDoneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val workoutName = intent.getStringExtra("workoutName")
+        var subWorkout = intent.getIntExtra("day", 0).toString()
+        val exerciseNumber = intent.getIntExtra("exerciseNumber", 10)
+
+        if (workoutName.equals("Busy Workout") || workoutName.equals("Burst Workout")) {
+            subWorkout = "Day ${subWorkout}"
+        }
+
+        binding.tvWorkoutName.text = "You completed the \n ${subWorkout} \n of the \n ${workoutName}"
+        binding.tvNumberOfExercises.text = "${exerciseNumber} Exercises Finished"
+
         binding.tvDone.setOnClickListener {
             (this.application as GlobalVariables).streak++
             var gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)

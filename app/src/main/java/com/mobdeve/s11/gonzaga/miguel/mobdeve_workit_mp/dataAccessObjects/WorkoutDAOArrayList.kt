@@ -27,7 +27,7 @@ class WorkoutDAOArrayList() {
                                 "by jumping to a position with legs spread and arms raised and then " +
                                 "to the original position.",
                         R.drawable.jumping_jacks,
-                        30, 2, 5)
+                        20, 1, 5)
                 )
                 burstExerciseList.add(
                     ExerciseModel( "Jogging in place" ,
@@ -37,7 +37,7 @@ class WorkoutDAOArrayList() {
                                 "At the same time, move your right arm back and your left arm forward and up." +
                                 "Continue these movements.",
                         R.drawable.jogging,
-                        30, 2, 3)
+                        40, 2, 3)
                 )
 
         var j = 0
