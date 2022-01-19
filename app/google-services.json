@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "335415329947",
-    "project_id": "mobdeve-workit-mp-7a288",
-    "storage_bucket": "mobdeve-workit-mp-7a288.appspot.com"
+    "project_number": "400317039424",
+    "project_id": "mobdeve-workit-mp-12c20",
+    "storage_bucket": "mobdeve-workit-mp-12c20.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:335415329947:android:906d04c03e7525b902323e",
+        "mobilesdk_app_id": "1:400317039424:android:ef5c8a8ef234b3b66430a5",
         "android_client_info": {
           "package_name": "com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "335415329947-fp0hu8irj7ekinqulebtragia61rbdnj.apps.googleusercontent.com",
+          "client_id": "400317039424-td3dupsel1dk138vh75uqjar3985snon.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA9h65O-uwlecQs4kbm4RdL-UUxtTyCWFM"
+          "current_key": "AIzaSyADNDOreI8K3RhX11nuRfZEQbPa06VO9SU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "335415329947-fp0hu8irj7ekinqulebtragia61rbdnj.apps.googleusercontent.com",
+              "client_id": "400317039424-td3dupsel1dk138vh75uqjar3985snon.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

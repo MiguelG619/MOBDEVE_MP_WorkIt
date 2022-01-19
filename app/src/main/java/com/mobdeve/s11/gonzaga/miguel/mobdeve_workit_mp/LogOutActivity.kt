@@ -6,6 +6,8 @@ import android.os.Bundle
 import com.facebook.FacebookSdk
 import com.facebook.login.LoginManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityLogOutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityStreakBinding
 
@@ -27,6 +29,7 @@ class LogOutActivity : AppCompatActivity() {
             //  Logout the user first
             // Logout FB
             LoginManager.getInstance().logOut();
+            Firebase.auth.signOut()
             var gotoLogInActivity = Intent(applicationContext, LogInActivity::class.java)
             startActivity(gotoLogInActivity)
             finish()

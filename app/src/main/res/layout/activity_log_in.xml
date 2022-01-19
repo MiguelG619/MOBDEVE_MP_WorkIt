@@ -22,7 +22,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="32dp"
+            android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline" />
@@ -41,7 +41,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Welcome "
             android:textColor="@color/black"
-            android:textSize="22dp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline1" />
@@ -55,7 +55,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Email address:"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
 
@@ -71,7 +71,7 @@
             android:lines="1"
             android:paddingHorizontal="7dp"
             android:paddingVertical="7dp"
-            android:textSize="10dp"
+            android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_new_reminder" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Password:"
             android:textColor="@color/black"
-            android:textSize="14dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
@@ -99,7 +99,7 @@
             android:lines="1"
             android:paddingHorizontal="7dp"
             android:paddingVertical="7dp"
-            android:textSize="10dp"
+            android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit" />
 
         <TextView
@@ -113,7 +113,7 @@
             android:paddingVertical="5dp"
             android:text="Don't have an account?"
             android:textColor="@color/black"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_pwd" />
 
@@ -139,7 +139,7 @@
                 android:paddingVertical="7dp"
                 android:text="Log In"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mcv_fb" />
 
