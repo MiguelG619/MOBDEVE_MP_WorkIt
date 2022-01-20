@@ -49,6 +49,7 @@ class LogInActivity : AppCompatActivity() {
         }
 
         var fbLogIn = binding!!.btnFBLogIn
+        firstName = "Sean"
 
         callbackManager = CallbackManager.Factory.create()
         fbLogIn.setPermissions(Arrays.asList("user_friends"))
@@ -91,15 +92,21 @@ class LogInActivity : AppCompatActivity() {
 
     }
 
-     /*override fun onStart() {
+     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
          // Check if there is user logged in
         if(currentUser != null){
-
+            val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
+            //Passing data to from one page to another or in this case a string
+            //gotoHomeActivity.putExtra("firstNameExtra", firstName)
+            gotoHomeActivity.putExtra("firstNameExtra", firstName)
+            startActivity(gotoHomeActivity)
+            // Destroys the originating activity to prevent hackers
+            finish()
         }
-    }*/
+    }
 
     private fun handleFacebookAccessToken(token: AccessToken) {
         Log.d("TESSTTTT", "handleFacebookAccessToken:$token")
@@ -114,7 +121,8 @@ class LogInActivity : AppCompatActivity() {
 
                     val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
                     //Passing data to from one page to another or in this case a string
-                    gotoHomeActivity.putExtra("firstNameExtra", firstName)
+                    //gotoHomeActivity.putExtra("firstNameExtra", firstName)
+                    gotoHomeActivity.putExtra("firstNameExtra", "Sean")
                     startActivity(gotoHomeActivity)
                             // Destroys the originating activity to prevent hackers
                     finish()
@@ -149,7 +157,7 @@ class LogInActivity : AppCompatActivity() {
         if(user != null){
             val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
             //Passing data to from one page to another or in this case a string
-            gotoHomeActivity.putExtra("firstNameExtra", "Sean")
+            gotoHomeActivity.putExtra("firstNameExtra", firstName)
             startActivity(gotoHomeActivity)
             finish()
         }

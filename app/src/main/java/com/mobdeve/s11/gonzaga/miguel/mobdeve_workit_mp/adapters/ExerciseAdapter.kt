@@ -85,6 +85,7 @@ class ExerciseAdapter(
         fun bindUser(exercise: ExerciseModel) {
             itemBinding.tvExerciseTitle.text = exercise.title
             itemBinding.tvExerciseSetsReps.text = "${exercise.sets} sets X ${exercise.reps} reps"
+            itemBinding.ivExercise.setImageResource(exercise.image)
         }
 
     }

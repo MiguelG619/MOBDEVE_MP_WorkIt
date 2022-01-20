@@ -34,7 +34,7 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/jumping_jacks" />
+                app:srcCompat="@drawable/workout_bg" />
 
         </com.google.android.material.card.MaterialCardView>
 

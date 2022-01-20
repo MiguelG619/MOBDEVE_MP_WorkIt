@@ -27,12 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:fontFamily="@font/poppins_bold"
         android:gravity="start"
         android:text="Hello, Sean"
         android:textColor="#111111"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
@@ -77,7 +76,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Busy Schedule Workout"
                     android:textColor="@color/white"
-                    android:textSize="22dp"
+                    android:textSize="21sp"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2_busy"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +87,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dip"
                     android:layout_marginEnd="24dip"
-                    android:layout_marginRight="24dip"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_forward" />
@@ -101,26 +99,11 @@
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginBottom="48dip"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="5 Exercises"
+                    android:text="5 Workouts"
                     android:textColor="@color/white"
-                    android:textSize="12dp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_exercise_count_busy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginBottom="48dip"
-                    android:alpha=".8"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="4 Exercises"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -168,7 +151,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Burst Workout"
                     android:textColor="@color/white"
-                    android:textSize="22dp"
+                    android:textSize="21sp"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2_burst"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -179,7 +162,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dip"
                     android:layout_marginEnd="24dip"
-                    android:layout_marginRight="24dip"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_forward" />
@@ -192,26 +174,11 @@
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginBottom="48dip"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="7 days"
+                    android:text="7 Workouts"
                     android:textColor="@color/white"
-                    android:textSize="12dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_exercise_count_burst"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginBottom="48dip"
-                    android:alpha=".8"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="4 Exercises"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -256,7 +223,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="My Workouts"
                     android:textColor="@color/white"
-                    android:textSize="22dp"
+                    android:textSize="21sp"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2_my_workout"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -267,7 +234,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dip"
                     android:layout_marginEnd="24dip"
-                    android:layout_marginRight="24dip"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_forward" />
@@ -281,7 +247,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:text="3 Workouts"
                     android:textColor="@color/white"
-                    android:textSize="12dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
