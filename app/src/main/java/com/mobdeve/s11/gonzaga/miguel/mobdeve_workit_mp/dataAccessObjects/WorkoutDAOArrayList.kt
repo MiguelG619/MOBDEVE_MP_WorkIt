@@ -37,17 +37,72 @@ class WorkoutDAOArrayList() {
                                 "At the same time, move your right arm back and your left arm forward and up." +
                                 "Continue these movements.",
                         R.drawable.jogging,
-                        40, 2, 3)
+                        30, 2, 10)
                 )
+        burstExerciseList.add(
+            ExerciseModel( "Push-up" ,
+                "The push-up builds both upper-body and core strength." +
+                        "Get down on all fours, placing your hands slightly wider than your shoulders." +
+                        "Straighten your arms and legs." +
+                        "Lower your body until your chest nearly touches the floor." +
+                        "Pause, then push yourself back up." +
+                        "Repeat.",
+                R.drawable.pushup,
+                10, 3, 20)
+        )
+        burstExerciseList.add(
+            ExerciseModel( "Squats" ,
+                "The squat is a dynamic strength training exercise that requires several muscles in your upper and lower body to work together simultaneously. Stand with the feet shoulder-width apart and the toes pointing slightly outward. The arms should be straight out in front." +
+                        "Bend the knees to push the hips backward, keeping the back straight and the torso upright. The movement is similar to sitting back in a chair. Once the knees reach a 90-degree angle or lower, push back up through the feet to straighten the legs.",
+                R.drawable.squats,
+                15, 3, 15)
+        )
+        burstExerciseList.add(
+            ExerciseModel( "Crunches" ,
+                "The crunch is a classic core exercise. It specifically trains your abdominal muscles, which are part of your core." +
+                        "Lie down on your back. Plant your feet on the floor, hip-width apart. Bend your knees and place your arms across your chest. Contract your abs and inhale." +
+                        "Exhale and lift your upper body, keeping your head and neck relaxed." +
+                        "Inhale and return to the starting position.",
+                R.drawable.crunches,
+                20, 3, 10)
+        )
+        burstExerciseList.add(
+            ExerciseModel( "Triceps Dips" ,
+                "The triceps dip exercise is a great bodyweight exercise that builds arm and shoulder strength." +
+                        "Sit on the edge of a stable chair, weight bench, or step and grip the edge next to your hips." +
+                        "" +
+                        "Press into your palms to lift your body and slide forward just far enough that your behind clears the edge of the chair." +
+                        "Lower yourself until your elbows are bent between 45 and 90 degrees. Control the movement throughout the range of motion." +
+                        "Push yourself back up slowly until your arms are almost straight and repeat.",
+                R.drawable.triceps_dips,
+                40, 2, 3)
+        )
+        burstExerciseList.add(
+            ExerciseModel( "High Knees" ,
+                "Stand tall with your feet about hip-to-shoulder-width apart and your arms at your sides.\n" +
+                        "Looking straight ahead, open your chest, and engage your core muscles." +
+                        "Begin by bringing your right knee toward your chest, slightly above waist level. Simultaneously, move your left hand up in a pumping motion." +
+                        "Quickly lower your right leg and left hand." +
+                        "Repeat with your left leg and right hand." +
+                        "Alternate your right and left leg for the desired time.",
+                R.drawable.jogging,
+                40, 2, 3)
+        )
+
 
         var j = 0
             while (j < 7) {
-                burstWorkout.add(WorkoutModel("Day ${j+1}", burstExerciseList, burstExerciseList.size))
+                burstWorkout.add(WorkoutModel("Workout Number ${j+1}", burstExerciseList, burstExerciseList.size))
                 j++
             }
+        j = 0
+        while (j < 5) {
+            busyWorkout.add(WorkoutModel("Workout Number ${j+1}", burstExerciseList, burstExerciseList.size))
+            j++
+        }
 
 
-                busyExerciseList.add(
+                /*busyExerciseList.add(
                     ExerciseModel( "Jumping Jacks" ,
                         "A conditioning exercise performed from a standing position " +
                                 "by jumping to a position with legs spread and arms raised and then " +
@@ -68,10 +123,10 @@ class WorkoutDAOArrayList() {
                 )
 
             j = 0
-            while (j < 7) {
-                busyWorkout.add(WorkoutModel("Day ${j+1}", busyExerciseList, busyExerciseList.size))
+            while (j < 5) {
+                busyWorkout.add(WorkoutModel("Workout Number ${j+1}", busyExerciseList, busyExerciseList.size))
                 j++
-            }
+            }*/
 
         // My workout
 

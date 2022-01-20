@@ -12,6 +12,7 @@ import android.util.Patterns
 import android.widget.Toast
 import com.facebook.*
 import com.facebook.login.LoginManager
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -26,6 +27,7 @@ class LogInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var email: String
     lateinit var password: String
+    lateinit var firstName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,21 +55,17 @@ class LogInActivity : AppCompatActivity() {
 
         // Callback registration
         fbLogIn.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
-            override fun onSuccess(result: LoginResult?) {
-                val graphRequest = GraphRequest.newMeRequest(result?.accessToken) { obj, response ->
+            override fun onSuccess(loginResult: LoginResult?) {
+                val graphRequest = GraphRequest.newMeRequest(loginResult?.accessToken) { obj, response ->
 
                     try {
                         if (obj!!.has("id")) {
-                            var firstName = obj.getString("first_name")
+                            firstName = obj.getString("first_name")
                             Log.d("facebookdata", obj.getString("name"))
                             Log.d("facebookdata", firstName)
 
-                            val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
-                            //Passing data to from one page to another or in this case a string
-                            gotoHomeActivity.putExtra("firstNameExtra", firstName)
-                            startActivity(gotoHomeActivity)
-                            // Destroys the originating activity to prevent hackers
-                            finish()
+                            handleFacebookAccessToken(loginResult!!.accessToken)
+
 
                         }
                     } catch (e: Exception) {
@@ -97,10 +95,38 @@ class LogInActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
+         // Check if there is user logged in
         if(currentUser != null){
-            //reload();
+
         }
     }*/
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        Log.d("TESSTTTT", "handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("TESSTTTT", "signInWithCredential:success")
+                    val user = auth.currentUser
+
+                    val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
+                    //Passing data to from one page to another or in this case a string
+                    gotoHomeActivity.putExtra("firstNameExtra", firstName)
+                    startActivity(gotoHomeActivity)
+                            // Destroys the originating activity to prevent hackers
+                    finish()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w("TESSTTTT", "signInWithCredential:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                }
+            }
+    }
 
     fun doLogin() {
         auth.signInWithEmailAndPassword(email, password)
