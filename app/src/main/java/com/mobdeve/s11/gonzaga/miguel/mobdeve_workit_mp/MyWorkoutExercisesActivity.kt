@@ -53,7 +53,6 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
         }
 
         binding. ivBack.setOnClickListener {
-            // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
         }

@@ -126,7 +126,6 @@
             app:itemTextColor="@drawable/selector"
             app:itemIconTint="@drawable/selector"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

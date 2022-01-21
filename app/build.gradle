@@ -1,4 +1,11 @@
 
+buildscript {
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
+    }
+}
+
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -58,7 +65,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'com.facebook.android:facebook-android-sdk:12.1.0'
 }
-
 
 
 

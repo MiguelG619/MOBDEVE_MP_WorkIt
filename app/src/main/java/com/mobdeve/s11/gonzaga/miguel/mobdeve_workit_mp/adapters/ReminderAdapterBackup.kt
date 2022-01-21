@@ -1,5 +1,6 @@
-package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters
 
+package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters
+/*
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -87,4 +88,4 @@ class ReminderAdapterBackup(
         mContext = context
         this.onItemClickListener = onItemClickListener
     }
-}
+}*/

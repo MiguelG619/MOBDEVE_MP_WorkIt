@@ -3,6 +3,7 @@ package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.adapters.ExerciseAdapter
@@ -36,18 +37,26 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
             LinearLayoutManager.VERTICAL,
             false)
 
-        binding!!.tvAddExercise.setOnClickListener {
-
-
-        }
 
         binding!!.tvDone.setOnClickListener {
-            // Add popup
+            var tempExerciseList =  (this.application as GlobalVariables).tempExerciseList
+            if (tempExerciseList.isEmpty())
+              Toast.makeText(this, "Add exercises first!", Toast.LENGTH_SHORT).show()
+            else {
+                var gotoNameWorkoutActivity = Intent(applicationContext, NameWorkoutActivity::class.java)
+                startActivity(gotoNameWorkoutActivity)
+                //SAve it workoutdao array
+
+            }
+
+
         }
 
     }
+
+
     fun populateList() {
-        exerciseList = exerciseDAO.getExercises()!!
+        exerciseList = exerciseDAO.allExercisesList
 
     }
 
@@ -57,7 +66,16 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
 
     override fun onLoadClick(position: Int) {
         // Send data first based on the position
-        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
-        startActivity(gotoViewExerciseActivity)
+        //Save na lang agad
+
+        var gotoAddExerciseToWorkoutActivityercise = Intent(applicationContext, AddExerciseToWorkoutActivity::class.java)
+        gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseName", exerciseList[position]!!.title)
+        gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseDescription", exerciseList[position]!!.description)
+        gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseImage", exerciseList[position]!!.image)
+        gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseReps", exerciseList[position]!!.reps)
+        gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseSets", exerciseList[position]!!.sets)
+        gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseRest", exerciseList[position]!!.restTime)
+
+        startActivity(gotoAddExerciseToWorkoutActivityercise)
     }
 }

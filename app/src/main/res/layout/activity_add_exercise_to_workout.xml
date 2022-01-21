@@ -63,6 +63,7 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/exercise_image"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 app:srcCompat="@drawable/jumping_jacks"
@@ -79,8 +80,10 @@
                             android:orientation="vertical"
                             app:layout_constraintGuide_percent=".5" />
 
-                        <EditText
-                            android:id="@+id/edt_reps"
+
+                        <!--tv-->
+                        <TextView
+                            android:id="@+id/tv_reps"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
@@ -88,19 +91,16 @@
                             android:background="@drawable/back_edt_green"
                             android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
-                            android:hint="Enter reps"
-                            android:inputType="number"
-                            android:maxLines="1"
                             android:paddingVertical="7dp"
+                            android:text="30 reps"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
-                            android:textSize="12dp"
+                            android:textSize="15sp"
                             app:layout_constraintEnd_toStartOf="@+id/guideline"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/mcv_img" />
 
-                        <EditText
-                            android:id="@+id/edt_sets"
+                        <TextView
+                            android:id="@+id/tv_sets"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
@@ -108,13 +108,10 @@
                             android:background="@drawable/back_edt_green"
                             android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
-                            android:hint="Enter sets"
-                            android:inputType="number"
-                            android:maxLines="1"
                             android:paddingVertical="7dp"
+                            android:text="3 sets"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
-                            android:textSize="12dp"
+                            android:textSize="15sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/guideline"
                             app:layout_constraintTop_toBottomOf="@+id/mcv_img" />
@@ -124,10 +121,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:barrierDirection="bottom"
-                            app:constraint_referenced_ids="edt_reps,edt_sets" />
+                            app:constraint_referenced_ids="tv_reps,tv_sets" />
 
-                        <EditText
-                            android:id="@+id/edt_time"
+                        <TextView
+                            android:id="@+id/tv_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
@@ -136,14 +133,11 @@
                             android:background="@drawable/back_edt_green"
                             android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
-                            android:hint="Enter rest time\nbetween sets"
-                            android:inputType="number"
-                            android:maxLength="2"
                             android:paddingHorizontal="14dp"
                             android:paddingVertical="10dp"
+                            android:text="30 Second Rest"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
-                            android:textSize="12dp"
+                            android:textSize="15sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -154,36 +148,31 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <EditText
-                    android:id="@+id/edt_exercise_title"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_exercise_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dip"
                     android:layout_marginTop="8dip"
-                    android:background="@color/white"
                     android:fontFamily="@font/poppins_semibold"
-                    android:hint="Enter exercise name"
-                    android:maxLines="1"
-                    android:paddingVertical="5dp"
+                    android:textAllCaps="true"
+                    android:text="Add Exercise"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mcv_header" />
 
-                <EditText
-                    android:id="@+id/edt_exercise_des"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_exercise_des"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dip"
-                    android:background="@color/white"
                     android:fontFamily="@font/poppins_medium"
-                    android:hint="Enter description"
-                    android:maxLines="3"
-                    android:paddingVertical="5dp"
+                    android:text="A conditioning exercise performed from a standing position by jumping to a position."
                     android:textColor="@color/black"
                     android:textSize="12dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edt_exercise_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_exercise_title" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -197,9 +186,9 @@
             android:background="@drawable/card_back_green"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:text="Add"
+            android:text="Add To Workout"
             android:textColor="@color/white"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation" />
 
         <!--Bottom navigation bar-->
@@ -207,10 +196,12 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_navigation"
             android:background="@color/white"
             app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/bottom_navigation" />
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

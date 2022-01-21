@@ -44,6 +44,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         }*/
 
         binding!!.tvCreate.setOnClickListener {
+            emptyTempArray()
             val gotoCreateWorkoutActivity = Intent(applicationContext, CreateWorkoutActivity::class.java)
             startActivity(gotoCreateWorkoutActivity)
 
@@ -57,6 +58,16 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         }
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+    }
+
+    fun emptyTempArray() {
+        var tempExerciseList =  (this.application as GlobalVariables).tempExerciseList
+        var size = tempExerciseList.size
+        var i = 0
+        while (i < size) {
+            tempExerciseList.removeAt(i)
+            i++
+        }
     }
 
     fun populateList() {
