@@ -8,7 +8,6 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 class WorkoutDAOArrayList() {
     var burstWorkout = ArrayList<WorkoutModel?>()
     var busyWorkout = ArrayList<WorkoutModel?>()
-    var myWorkoutList = ArrayList<WorkoutModel?>()
     var exercises: ExerciseDAOArrayList = ExerciseDAOArrayList()
 
 
@@ -38,13 +37,13 @@ class WorkoutDAOArrayList() {
         }
 
         // My workout
-        i = 0
+        /*i = 0
         while (i < 2) {
             myOwnExerciseList1.add(exercises.allExercisesList[i])
             i++
         }
 
-        myWorkoutList.add(WorkoutModel("My Workout 1", myOwnExerciseList1, myOwnExerciseList1.size))
+        myWorkoutList.add(WorkoutModel("My Workout 1", myOwnExerciseList1, myOwnExerciseList1.size))*/
 
         /*var l = 0
         while (l < 5) {
@@ -74,17 +73,17 @@ class WorkoutDAOArrayList() {
     }
 
     // Long is for the user ID when we use a database
-    fun addWorkout(workout: WorkoutModel): Long {
+    /*fun addWorkout(workout: WorkoutModel): Long {
         myWorkoutList.add(workout)
         Log.i("qqqqqqqqqqqqqqqqq", workout.workoutName)
         return 1L
-    }
+    }*/
 
-    fun getMyWorkouts(): ArrayList<WorkoutModel?>? = myWorkoutList
+   /* fun getMyWorkouts(): ArrayList<WorkoutModel?>? = myWorkoutList
 
     fun getMyWorkout(workoutId: Int): WorkoutModel? = myWorkoutList[workoutId]
 
-    fun getMyWorkoutExercises(workoutId: Int): ArrayList<ExerciseModel?>? = myWorkoutList[workoutId]?.exercises
+    fun getMyWorkoutExercises(workoutId: Int): ArrayList<ExerciseModel?>? = myWorkoutList[workoutId]?.exercises*/
 
     fun getBurstWorkouts() : ArrayList<WorkoutModel?>? = burstWorkout
 

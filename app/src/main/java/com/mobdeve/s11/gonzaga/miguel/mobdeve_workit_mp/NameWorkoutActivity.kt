@@ -51,20 +51,22 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
 
                 var createdExerciseList = (this.application as GlobalVariables).tempExerciseList
                 var createdWorkout = WorkoutModel(workoutName, createdExerciseList, createdExerciseList.size)
+                Log.d("sssssssssssssss", "createdWorkout: " + createdWorkout.workoutName)
+
+                var myWorkouts = (this.application as GlobalVariables).myWorkoutList
+                myWorkouts.add(createdWorkout)
+
+               // Log.d("fsdsdf", "createdwokrout "+ myWorkouts[1]!!.workoutName)
 
 
-                workoutDAO.addWorkout(createdWorkout)
-                // klailangan din ata uipdate yung adapter
-                var createdExerciseListSize = createdExerciseList.size
-                var i = 0
-                while (i < createdExerciseListSize) {
-                    createdExerciseList.removeAt(i)
-                    i++
-                }
-
+                //var createdExerciseListSize = createdExerciseList.size
 
                  val gotoMyWorkoutActivity = Intent(applicationContext, MyWorkoutActivity::class.java)
-                 startActivity(gotoMyWorkoutActivity)
+                //send index to update in adapter
+                /*var workoutDAOSizeIndex = workoutDAO.myWorkoutList.size - 1
+                gotoMyWorkoutActivity.putExtra("index", workoutDAOSizeIndex)
+                gotoMyWorkoutActivity.putExtra("createdWorkout", createdWorkout)*/
+                startActivity(gotoMyWorkoutActivity)
             }
 
         }

@@ -32,7 +32,8 @@ class HomeActivity : AppCompatActivity() {
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
-        val myWorkoutsNumber = WorkoutDAOArrayList().myWorkoutList.size
+        var myWorkoutsNumber = (this.application as GlobalVariables).myWorkoutList.size
+        //val myWorkoutsNumber = WorkoutDAOArrayList().myWorkoutList.size
         binding.tvDaysMyWorkout.text = "${myWorkoutsNumber.toString()} Workouts"
 
          binding.mcvRowBurst.setOnClickListener {

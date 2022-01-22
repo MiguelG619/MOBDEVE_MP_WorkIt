@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVE_WorkIt_MP">
         <activity
+            android:name=".ReminderActivity"
+            android:exported="false" />
+        <activity
             android:name=".NameWorkoutActivity"
             android:exported="false" />
         <activity
@@ -109,7 +112,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
+
+
         </activity> <!-- FB API -->
+
         <activity
             android:name=".BurstWorkoutActivity"
             android:exported="false" />
@@ -134,10 +140,18 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity> <!-- FB API SHARING OF STREAK -->
+
+
+
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider1681233308875292"
             android:exported="true" />
+
+
+        <receiver android:name=".AlarmReceiver"/>
+
     </application>
+
 
 </manifest>

@@ -73,8 +73,11 @@ class RestTimeActivity : AppCompatActivity() {
             exerciseList = workoutDAO.getBurstWorkoutExercises(position)!!
         else if (workoutName.equals("Busy Workout"))
             exerciseList = workoutDAO.getBusyWorkoutExercises(position)!!
-        else if (workoutName.equals("My Workout"))
-            exerciseList = workoutDAO.getMyWorkoutExercises(position)!!
+        else if (workoutName.equals("My Workout")) {
+            var myWorkoutList = (this.application as GlobalVariables).myWorkoutList
+            exerciseList = myWorkoutList[position]!!.exercises!!
+        }
+
     }
 
     fun isDoneWorkout(): Boolean {

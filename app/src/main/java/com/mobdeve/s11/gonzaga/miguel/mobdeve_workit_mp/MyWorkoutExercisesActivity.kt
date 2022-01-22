@@ -14,6 +14,7 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.Workou
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityBusyScheduleWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutExercisesBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 
 class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
@@ -23,6 +24,7 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
     var position: Int = 0
     val workoutName = "My Workout"
+    var myWorkoutList = ArrayList<WorkoutModel?>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
 
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
+        myWorkoutList = (this.application as GlobalVariables).myWorkoutList
         populateList()
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding.rvExercises.adapter = exerciseAdapter
@@ -66,14 +69,14 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
     fun populateList() {
         // get adapter position
         position = intent.getIntExtra("position", 10)
-        exerciseList = workoutDAO.getMyWorkoutExercises(position)!!
+        exerciseList = myWorkoutList[position]!!.exercises!!
         updateText(position)
     }
 
     fun updateText(position: Int) {
-        val workoutName = workoutDAO.myWorkoutList[position]!!.workoutName
+        val workoutName = myWorkoutList[position]!!.workoutName
         binding.tvWorkoutTitle.text = workoutName
-        val numExercises = workoutDAO.myWorkoutList[position]!!.numExercises
+        val numExercises = myWorkoutList[position]!!.numExercises
         if (numExercises <= 1) {
             binding.tvExerciseCount.text = "${numExercises} Exercise"
         } else {

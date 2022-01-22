@@ -34,7 +34,7 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/workout_bg" />
+                app:srcCompat="@drawable/timer" />
 
         </com.google.android.material.card.MaterialCardView>
 

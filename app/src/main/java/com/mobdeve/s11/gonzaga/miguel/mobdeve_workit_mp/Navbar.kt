@@ -19,11 +19,10 @@ class Navbar(bottomNavigationView: BottomNavigationView, appCon: Context, navIte
                 R.id.nav_streak -> {
                     val intent = Intent(appCon, StreakActivity::class.java)
                     appCon.startActivity(intent)
-                }
-                /*R.id.nav_reminder -> {
+                }R.id.nav_reminder -> {
                     val intent = Intent(appCon, ReminderActivity::class.java)
                     appCon.startActivity(intent)
-                }*/
+                }
                 R.id.nav_logout -> {
                     val intent = Intent(appCon, LogOutActivity::class.java)
                     appCon.startActivity(intent)

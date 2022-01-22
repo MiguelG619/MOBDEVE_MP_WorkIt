@@ -146,7 +146,7 @@ class LogInActivity : AppCompatActivity() {
                     updateUI(user)
                 } else {
                     Log.w("EEEEEEEEEEEEEEEeeeewe", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Wrong information given. Sign up if you don't have an account",
                         Toast.LENGTH_SHORT).show()
                     updateUI(null)
                 }
