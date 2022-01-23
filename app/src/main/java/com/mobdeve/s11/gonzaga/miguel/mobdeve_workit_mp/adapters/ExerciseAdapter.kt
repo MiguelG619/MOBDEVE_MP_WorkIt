@@ -51,10 +51,11 @@ class ExerciseAdapter(
         notifyDataSetChanged()
     }
 
-    fun removeUser(position: Int, workout: WorkoutModel) {
-        workout.exercises?.removeAt(position)
+    fun removeExercise(position: Int) {
+        exerciseList.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, itemCount)
+
     }
 
 

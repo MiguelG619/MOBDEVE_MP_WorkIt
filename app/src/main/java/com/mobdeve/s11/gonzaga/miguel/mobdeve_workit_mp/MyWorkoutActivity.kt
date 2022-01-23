@@ -19,8 +19,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     var workoutAdapter: WorkoutAdapter? = null
     // Content of the data
     lateinit var workoutList: ArrayList<WorkoutModel?>
-    var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
-    var index = 0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +39,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
             LinearLayoutManager.VERTICAL,
             false)
 
+        R.layout.activity_splash
         // Send updated workoutlist from namewokrout
         /*if (intent.hasExtra("index")) {
             index = intent.getIntExtra("index", 0)
@@ -54,6 +54,8 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
 
 
         binding!!.rvWorkoutList.adapter = workoutAdapter
+
+        binding!!.tvWorkoutNumber.text = "${workoutList.size} Workouts"
 
         binding!!.tvCreate.setOnClickListener {
             emptyTempArray()

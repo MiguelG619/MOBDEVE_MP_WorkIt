@@ -13,14 +13,17 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityHomeBinding
+    var firstName = "User"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val firstNameExtra = intent.getStringExtra("firstNameExtra")
-        binding!!.tvUsername.text = "Hello, $firstNameExtra"
+        if (intent.hasExtra("firstNameExtra")) {
+            firstName = intent.getStringExtra("firstNameExtra").toString()
+        }
+        binding!!.tvUsername.text = "Hello, $firstName"
 
         val c: Date = Calendar.getInstance().time
 

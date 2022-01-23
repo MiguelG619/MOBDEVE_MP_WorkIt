@@ -7,6 +7,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import android.media.RingtoneManager
+import android.net.Uri
+
 
 class AlarmReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -16,10 +19,13 @@ class AlarmReceiver: BroadcastReceiver() {
         intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
 
-        val builder = NotificationCompat.Builder(context!!, "WorkIt!")
+        val soundUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+        val builder = NotificationCompat.Builder(context!!, "WorkItId")
             .setSmallIcon(R.drawable.ic_app_logo)
             .setContentTitle("WorkIt!")
             .setContentText("Time for you to WorkIt Out!")
+            .setSound(soundUri)
             .setAutoCancel(true)
             .setDefaults(Notification.DEFAULT_ALL)
             .setPriority(Notification.PRIORITY_HIGH)

@@ -17,7 +17,7 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 
 class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
     lateinit var binding: ActivityNameWorkoutBinding
-    var exerciseAdapter: ExerciseAdapter? = null
+    lateinit var exerciseAdapter: ExerciseAdapter
     lateinit var workoutName: String
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
 
@@ -82,10 +82,19 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
     }
 
     override fun onDeleteClick(position: Int) {
-        TODO("Not yet implemented")
+        exerciseAdapter.removeExercise(position)
+        exerciseList.removeAt(position)
+        Log.d("qqqqqqq", "onDeleteClick: "+ exerciseList[position]?.title)
     }
 
-    override fun onLoadClick(position: Int) {
-        TODO("Not yet implemented")
+    override fun onLoadClick(positionExercise: Int) {
+        var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
+        gotoViewExerciseActivity.putExtra("title", exerciseList[positionExercise]?.title)
+        gotoViewExerciseActivity.putExtra("description", exerciseList[positionExercise]?.description)
+        gotoViewExerciseActivity.putExtra("image", exerciseList[positionExercise]?.image)
+        gotoViewExerciseActivity.putExtra("reps", exerciseList[positionExercise]?.reps)
+        gotoViewExerciseActivity.putExtra("sets", exerciseList[positionExercise]?.sets)
+        gotoViewExerciseActivity.putExtra("rest", exerciseList[positionExercise]?.restTime)
+        startActivity(gotoViewExerciseActivity)
     }
 }

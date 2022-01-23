@@ -12,5 +12,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!--<style name="SPLASH" parent="android:Theme">
+            <item name="android:windowBackground">@layout/activity_splash</item>
+            <item name="android:windowNoTitle">true</item>
+        </style>-->
     </style>
 </resources>

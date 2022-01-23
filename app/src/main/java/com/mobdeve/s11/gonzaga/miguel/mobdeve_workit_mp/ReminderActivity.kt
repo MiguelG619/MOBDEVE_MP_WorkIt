@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,10 +21,12 @@ import java.util.*
 class ReminderActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityReminderBinding
-    lateinit var picker : MaterialTimePicker
+    lateinit var materialTimePicker : MaterialTimePicker
     lateinit var calendar: Calendar
     lateinit var alarmManager: AlarmManager
     lateinit var pendingIntent: PendingIntent
+    var hour = 0
+    var minute = 0
     //var reminder = (this.application as GlobalVariables).reminder
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,10 @@ class ReminderActivity : AppCompatActivity() {
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
         //if (reminder != null) binding.tvSelectedTime.text = reminder.toString()
+        hour = (this.application as GlobalVariables).reminderHour
+        minute = (this.application as GlobalVariables).reminderMinute
+
+        setReminderText()
 
                createNotificationChannel()
 
@@ -51,9 +58,27 @@ class ReminderActivity : AppCompatActivity() {
 
     }
 
+    private fun setReminderText() {
+        if (hour == 0 && minute == 0) {
+            binding.tvSelectedTime.text =
+                String.format("%02d", hour) + " : " +
+                        String.format("%02d", minute)
+        }
+        else if (hour > 12) {
+            binding.tvSelectedTime.text =
+                String.format("%02d", hour - 12) + " : " +
+                        String.format("%02d", minute) + "PM"
+        } else {
+            binding.tvSelectedTime.text =
+                String.format("%02d", hour) + " : " +
+                        String.format("%02d", minute) + "AM"
+        }
+
+    }
+
     private fun cancelAlarm() {
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, AlarmManager::class.java)
+        val intent = Intent(this, AlarmReceiver::class.java)
 
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
         alarmManager.cancel(pendingIntent)
@@ -63,17 +88,20 @@ class ReminderActivity : AppCompatActivity() {
     }
 
     private fun setAlarm() {
-        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, AlarmManager::class.java)
+
+        val intent = Intent(this, AlarmReceiver::class.java)
 
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,pendingIntent
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
         )
 
+        (this.application as GlobalVariables).reminderHour = hour
+        (this.application as GlobalVariables).reminderMinute = minute
         //reminder = calendar
         Toast.makeText(this, "Notification time set Successfully!", Toast.LENGTH_SHORT).show()
 
@@ -81,29 +109,18 @@ class ReminderActivity : AppCompatActivity() {
 
     private fun showTimePicker() {
         Toast.makeText(this, "fdss!", Toast.LENGTH_SHORT).show()
-        picker = MaterialTimePicker.Builder()
+
+        materialTimePicker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_12H)
-            .setHour(12)
-            .setMinute(0)
-            .setTitleText("Select Alarm Time")
             .build()
 
-        picker.show(supportFragmentManager, "WorkIt")
-        var minute = picker.minute
-        var hour = picker.hour
-        /*
-        picker.addOnPositiveButtonClickListener {
-            if (hour > 12) {
-                String.format("%02d", hour - 12) + " : " + String.format(
-                    "%02d",
-                    minute
-                ) + "PM"
-            } else {
-                String.format("%02d", hour - 12) + " : " + String.format(
-                    "%02d",
-                    minute
-                ) + "AM"
-            }
+        materialTimePicker.show(supportFragmentManager, "WorkItId")
+
+        materialTimePicker.addOnPositiveButtonClickListener {
+            minute = materialTimePicker.minute
+            hour = materialTimePicker.hour
+
+            setReminderText()
 
             calendar = Calendar.getInstance()
             calendar[Calendar.HOUR_OF_DAY] = hour
@@ -111,7 +128,17 @@ class ReminderActivity : AppCompatActivity() {
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
 
-        }*/
+        }
+
+
+        /*picker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_12H)
+            .setHour(12)
+            .setMinute(0)
+            .setTitleText("Select Alarm Time")
+            .build()
+
+        */
     }
 
     private fun createNotificationChannel() {
@@ -120,7 +147,7 @@ class ReminderActivity : AppCompatActivity() {
             val name: CharSequence = "WorkItReminderChannel"
             val description = "Channel for Alarm Manager"
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val channel = NotificationChannel("WorkIt", name, importance)
+            val channel = NotificationChannel("WorkItId", name, importance)
             channel.description = description
             val notificationManager = getSystemService(
                 NotificationManager::class.java

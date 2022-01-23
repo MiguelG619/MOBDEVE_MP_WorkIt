@@ -27,7 +27,7 @@ class LogInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var email: String
     lateinit var password: String
-    lateinit var firstName: String
+    var firstName: String = "User"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

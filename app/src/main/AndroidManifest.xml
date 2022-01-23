@@ -15,8 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVE_WorkIt_MP">
         <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
             android:name=".ReminderActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".NameWorkoutActivity"
             android:exported="false" />
@@ -71,11 +81,11 @@
         <activity
             android:name=".LogInActivity"
             android:exported="true">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".CreateWorkoutSelectExercisesActivity"
@@ -113,9 +123,7 @@
             </intent-filter>
             -->
 
-
         </activity> <!-- FB API -->
-
         <activity
             android:name=".BurstWorkoutActivity"
             android:exported="false" />
@@ -140,18 +148,22 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity> <!-- FB API SHARING OF STREAK -->
-
-
-
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider1681233308875292"
             android:exported="true" />
 
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
 
-        <receiver android:name=".AlarmReceiver"/>
-
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
-
 
 </manifest>
