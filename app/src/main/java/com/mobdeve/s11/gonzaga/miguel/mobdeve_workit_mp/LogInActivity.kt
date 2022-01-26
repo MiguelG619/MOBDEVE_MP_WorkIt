@@ -32,9 +32,10 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogInBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+
+        setContentView(binding!!.root)
 
         auth = Firebase.auth
 

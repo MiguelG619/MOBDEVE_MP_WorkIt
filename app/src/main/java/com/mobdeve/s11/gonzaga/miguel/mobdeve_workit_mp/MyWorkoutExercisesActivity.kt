@@ -30,9 +30,11 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyWorkoutExercisesBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         myWorkoutList = (this.application as GlobalVariables).myWorkoutList

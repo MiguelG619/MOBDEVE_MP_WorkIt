@@ -26,6 +26,9 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateWorkoutBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding!!.root)
 
         supportActionBar!!.hide()

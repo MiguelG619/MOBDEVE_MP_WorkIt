@@ -22,9 +22,9 @@ class RunningExerciseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRunningExerciseBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+        setContentView(binding.root)
 
         var exerciseNumber = intent.getIntExtra("exerciseNumber", 0)
         val position = intent.getIntExtra("position", 10)

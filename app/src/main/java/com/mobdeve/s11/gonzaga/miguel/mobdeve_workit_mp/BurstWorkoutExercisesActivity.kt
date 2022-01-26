@@ -24,9 +24,10 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBurstWorkoutExercisesBinding.inflate(layoutInflater)
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()

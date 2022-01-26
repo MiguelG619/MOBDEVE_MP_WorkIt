@@ -25,9 +25,11 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyWorkoutBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding!!.root)
 
-        supportActionBar!!.hide()
 
         populateList()
         // populates the user adapter

@@ -21,9 +21,10 @@ class AddExerciseToWorkoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddExerciseToWorkoutBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
         setContentView(binding!!.root)
 
-        supportActionBar!!.hide()
 
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 

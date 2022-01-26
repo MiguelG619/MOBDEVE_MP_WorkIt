@@ -32,11 +32,13 @@ class ReminderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReminderBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
-        supportActionBar!!.hide()
 
         //if (reminder != null) binding.tvSelectedTime.text = reminder.toString()
         hour = (this.application as GlobalVariables).reminderHour

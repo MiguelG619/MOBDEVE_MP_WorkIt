@@ -27,9 +27,10 @@ class StreakActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStreakBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+
+        setContentView(binding.root)
 
         FacebookSdk.sdkInitialize(applicationContext);
 

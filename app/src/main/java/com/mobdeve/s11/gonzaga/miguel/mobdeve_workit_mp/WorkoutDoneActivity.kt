@@ -12,9 +12,10 @@ class WorkoutDoneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWorkoutDoneBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+
+        setContentView(binding.root)
 
         val workoutName = intent.getStringExtra("workoutName")
         var subWorkout = intent.getIntExtra("day", 0).toString()

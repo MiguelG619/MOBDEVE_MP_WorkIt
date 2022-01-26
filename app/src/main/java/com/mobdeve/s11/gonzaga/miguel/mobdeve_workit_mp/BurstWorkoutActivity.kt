@@ -24,9 +24,10 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+
+        setContentView(binding!!.root)
 
         populateList()
         workoutAdapter = WorkoutAdapter(workoutList, this)

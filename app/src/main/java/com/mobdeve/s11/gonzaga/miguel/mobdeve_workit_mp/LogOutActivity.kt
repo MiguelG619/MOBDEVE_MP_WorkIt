@@ -18,9 +18,11 @@ class LogOutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogOutBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_logout)
 

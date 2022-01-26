@@ -18,9 +18,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
 
         if (intent.hasExtra("firstNameExtra")) {
             firstName = intent.getStringExtra("firstNameExtra").toString()

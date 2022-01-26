@@ -13,9 +13,10 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+
+        setContentView(binding.root)
 
         binding.appCompatImageView.alpha = 0f
         binding.tvName.alpha = 0f

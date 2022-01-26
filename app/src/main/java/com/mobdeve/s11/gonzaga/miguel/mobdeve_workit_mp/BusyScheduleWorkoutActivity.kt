@@ -27,9 +27,10 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()

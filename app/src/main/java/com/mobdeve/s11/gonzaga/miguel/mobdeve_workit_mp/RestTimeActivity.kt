@@ -28,9 +28,9 @@ class RestTimeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestTimeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
+        setContentView(binding.root)
 
         val args = intent.getBundleExtra("BUNDLE")
         exercises = args!!.getSerializable("ARRAYLIST") as ArrayList<ExerciseModel?>

@@ -21,6 +21,9 @@ class CreateWorkoutSelectExercisesActivity : AppCompatActivity(), ExerciseAdapte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateWorkoutSelectExercisesBinding.inflate(layoutInflater)
+
+        supportActionBar?.hide()
+
         setContentView(binding!!.root)
 
         supportActionBar!!.hide()
