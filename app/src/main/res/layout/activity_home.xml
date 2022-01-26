@@ -76,7 +76,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Busy Schedule Workout"
                     android:textColor="@color/white"
-                    android:textSize="21sp"
+                    android:textSize="22sp"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2_busy"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +101,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:text="5 Workouts"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -151,7 +151,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Burst Workout"
                     android:textColor="@color/white"
-                    android:textSize="21sp"
+                    android:textSize="22sp"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2_burst"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -223,7 +223,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="My Workouts"
                     android:textColor="@color/white"
-                    android:textSize="21sp"
+                    android:textSize="22sp"
                     app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2_my_workout"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -243,6 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginBottom="48dip"
                     android:fontFamily="@font/poppins_medium"
                     android:text="3 Workouts"
