@@ -15,7 +15,7 @@ import com.google.android.material.timepicker.TimeFormat
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityReminderBinding
 import java.util.*
 
-class ReminderActivity : AppCompatActivity() {
+class ReminderworkingActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityReminderBinding
     lateinit var materialTimePicker : MaterialTimePicker
@@ -67,13 +67,13 @@ class ReminderActivity : AppCompatActivity() {
             val descriptionText = "Channel for Alarm Manager"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("WorkItId", name, importance)
-            channel.description = descriptionText
+                channel.description = descriptionText
 
             // Register the channel with the system
             val notificationManager: NotificationManager =
                 getSystemService(NotificationManager::class.java)
 
-            /*getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager*/
+                /*getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager*/
             notificationManager.createNotificationChannel(channel)
 
         }

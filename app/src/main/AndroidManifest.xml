@@ -15,18 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVE_WorkIt_MP">
         <activity
+            android:name=".SampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".ReminderActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".NameWorkoutActivity"
             android:exported="false" />
@@ -81,11 +89,14 @@
         <activity
             android:name=".LogInActivity"
             android:exported="true">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".CreateWorkoutSelectExercisesActivity"
@@ -152,18 +163,17 @@
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider1681233308875292"
             android:exported="true" />
-
         <receiver
+            android:name=".AlarmReceiver"/>
+        <!--<receiver
             android:name=".AlarmReceiver"
-            android:enabled="true"
-            android:exported="true">
+            android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
     </application>
 
 </manifest>

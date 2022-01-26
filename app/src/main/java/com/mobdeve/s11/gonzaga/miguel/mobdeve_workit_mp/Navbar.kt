@@ -2,7 +2,6 @@ package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Navbar(bottomNavigationView: BottomNavigationView, appCon: Context, navItem: Int) {

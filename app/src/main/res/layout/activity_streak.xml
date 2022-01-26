@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StreakActivity"
-    android:background="@color/streak_layout_background"
-    android:id="@+id/streakActivity">
+    android:background="@color/streak_layout_background">
 
     <View
         android:id="@+id/view2"
