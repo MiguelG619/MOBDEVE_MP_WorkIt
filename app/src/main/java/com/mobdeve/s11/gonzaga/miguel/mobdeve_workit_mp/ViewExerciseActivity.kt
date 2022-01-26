@@ -16,6 +16,8 @@ class ViewExerciseActivity : AppCompatActivity() {
         binding = ActivityViewExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
 

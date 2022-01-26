@@ -27,6 +27,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         binding = ActivityMyWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        supportActionBar!!.hide()
 
         populateList()
         // populates the user adapter

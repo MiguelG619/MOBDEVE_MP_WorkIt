@@ -36,6 +36,8 @@ class ReminderActivity : AppCompatActivity() {
 
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
+        supportActionBar!!.hide()
+
         //if (reminder != null) binding.tvSelectedTime.text = reminder.toString()
         hour = (this.application as GlobalVariables).reminderHour
         minute = (this.application as GlobalVariables).reminderMinute

@@ -20,6 +20,8 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         if (intent.hasExtra("firstNameExtra")) {
             firstName = intent.getStringExtra("firstNameExtra").toString()
         }

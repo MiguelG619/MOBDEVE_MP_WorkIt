@@ -26,6 +26,8 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        supportActionBar!!.hide()
+
         populateList()
         workoutAdapter = WorkoutAdapter(workoutList, this)
         binding.rvExercises.adapter = workoutAdapter

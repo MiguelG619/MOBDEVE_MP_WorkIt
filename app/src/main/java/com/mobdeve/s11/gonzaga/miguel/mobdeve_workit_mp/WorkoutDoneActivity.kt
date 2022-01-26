@@ -14,6 +14,8 @@ class WorkoutDoneActivity : AppCompatActivity() {
         binding = ActivityWorkoutDoneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         val workoutName = intent.getStringExtra("workoutName")
         var subWorkout = intent.getIntExtra("day", 0).toString()
         val exerciseNumber = intent.getIntExtra("exerciseNumber", 10)

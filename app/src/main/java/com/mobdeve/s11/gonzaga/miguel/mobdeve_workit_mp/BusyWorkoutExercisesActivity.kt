@@ -31,7 +31,7 @@ class BusyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItem
         binding = ActivityBurstWorkoutExercisesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        supportActionBar!!.hide()
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()

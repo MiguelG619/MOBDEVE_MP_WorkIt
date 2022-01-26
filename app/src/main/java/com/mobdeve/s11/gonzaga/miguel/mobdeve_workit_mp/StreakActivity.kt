@@ -28,8 +28,10 @@ class StreakActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStreakBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        FacebookSdk.sdkInitialize(applicationContext);
 
+        supportActionBar!!.hide()
+
+        FacebookSdk.sdkInitialize(applicationContext);
 
         callbackManager = CallbackManager.Factory.create()
         shareDialog = ShareDialog(this)

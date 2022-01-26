@@ -23,6 +23,8 @@ class CreateWorkoutSelectExercisesActivity : AppCompatActivity(), ExerciseAdapte
         binding = ActivityCreateWorkoutSelectExercisesBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        supportActionBar!!.hide()
+
         populateList()
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding!!.rvExerciseList.layoutManager = LinearLayoutManager(applicationContext,

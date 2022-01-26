@@ -29,7 +29,7 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemCl
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        supportActionBar!!.hide()
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         populateList()

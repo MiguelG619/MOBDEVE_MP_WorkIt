@@ -20,6 +20,8 @@ class LogOutActivity : AppCompatActivity() {
         binding = ActivityLogOutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_logout)
 
         FacebookSdk.sdkInitialize(getApplicationContext());

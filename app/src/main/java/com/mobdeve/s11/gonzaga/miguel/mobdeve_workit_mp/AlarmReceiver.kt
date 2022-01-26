@@ -13,7 +13,6 @@ import android.net.Uri
 
 class AlarmReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-
         // Loads the activity after clicking the notif?
         val i = Intent(context, HomeActivity::class.java)
         intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

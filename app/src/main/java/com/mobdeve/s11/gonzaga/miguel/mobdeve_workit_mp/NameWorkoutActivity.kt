@@ -28,6 +28,8 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
         binding = ActivityNameWorkoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
         populateList()

@@ -30,6 +30,8 @@ class RestTimeActivity : AppCompatActivity() {
         binding = ActivityRestTimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         val args = intent.getBundleExtra("BUNDLE")
         exercises = args!!.getSerializable("ARRAYLIST") as ArrayList<ExerciseModel?>
         val restTimeExtra = intent.getIntExtra("restTime", 0)

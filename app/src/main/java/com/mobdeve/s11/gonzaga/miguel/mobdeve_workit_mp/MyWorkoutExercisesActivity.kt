@@ -32,7 +32,7 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
         binding = ActivityMyWorkoutExercisesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        supportActionBar!!.hide()
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         myWorkoutList = (this.application as GlobalVariables).myWorkoutList

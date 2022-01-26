@@ -23,6 +23,8 @@ class AddExerciseToWorkoutActivity : AppCompatActivity() {
         binding = ActivityAddExerciseToWorkoutBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
+        supportActionBar!!.hide()
+
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
         val exerciseName = intent.getStringExtra("exerciseName")
