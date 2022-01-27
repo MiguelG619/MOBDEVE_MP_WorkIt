@@ -16,7 +16,7 @@
             android:background="@drawable/card_back_yellow"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:text="Create workout"
+            android:text="Select Exercise"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,22 +29,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/tv_done"
             app:layout_constraintTop_toBottomOf="@id/tv1" />
-
-
-        <TextView
-            android:id="@+id/tv_addExercise"
-            android:layout_width="match_parent"
-            android:layout_height="47dip"
-            android:layout_marginHorizontal="16dip"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/card_back_green"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="center"
-            android:text="Select Exercise to Add"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_done" />
 
         <TextView
             android:id="@+id/tv_done"
