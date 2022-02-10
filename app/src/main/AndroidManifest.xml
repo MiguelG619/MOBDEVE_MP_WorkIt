@@ -139,9 +139,10 @@
             android:name=".BurstWorkoutActivity"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token"/>
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -161,7 +162,7 @@
         </activity> <!-- FB API SHARING OF STREAK -->
         <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:authorities="com.facebook.app.FacebookContentProvider1681233308875292"
+            android:authorities="com.facebook.app.FacebookContentProvider898069907536193"
             android:exported="true" />
         <receiver
             android:name=".AlarmReceiver"/>
