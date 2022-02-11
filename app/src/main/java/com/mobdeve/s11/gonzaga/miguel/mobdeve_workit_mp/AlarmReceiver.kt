@@ -21,7 +21,7 @@ class AlarmReceiver: BroadcastReceiver() {
 
         val soundUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context!!, "WorkItId")
-            .setSmallIcon(R.drawable.ic_app_logo)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("WorkIt!")
             .setContentText("Time for you to WorkIt Out!")
             .setSound(soundUri)

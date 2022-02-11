@@ -125,7 +125,7 @@ class LogInActivity : AppCompatActivity() {
                     val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
                     //Passing data to from one page to another or in this case a string
                     //gotoHomeActivity.putExtra("firstNameExtra", firstName)
-                    gotoHomeActivity.putExtra("firstNameExtra", "Sean")
+                    gotoHomeActivity.putExtra("firstNameExtra", firstName)
                     startActivity(gotoHomeActivity)
                             // Destroys the originating activity to prevent hackers
                     finish()
