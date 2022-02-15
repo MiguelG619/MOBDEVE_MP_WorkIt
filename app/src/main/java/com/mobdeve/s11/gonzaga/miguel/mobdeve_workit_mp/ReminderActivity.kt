@@ -118,6 +118,7 @@ class ReminderActivity : AppCompatActivity() {
             binding.tvSelectedTime.text =
                 String.format("%02d", hour - 12) + ":" +
                         String.format("%02d", minute) + " PM"
+            Toast.makeText(this, hour.toString(), Toast.LENGTH_SHORT).show()
         } else {
             binding.tvSelectedTime.text =
                 String.format("%02d", hour) + ":" +

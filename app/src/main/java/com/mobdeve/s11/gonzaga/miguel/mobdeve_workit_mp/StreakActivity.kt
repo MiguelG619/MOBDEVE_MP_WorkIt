@@ -79,8 +79,14 @@ class StreakActivity : AppCompatActivity() {
     }*/
 
     fun loadData() {
-        STREAK = (this.application as GlobalVariables).id + "streak"
-        (this.application as GlobalVariables).streak = sharedPrefUtility.getIntegerPreferences(STREAK)!!
+        var id = (this.application as GlobalVariables).id
+        var IS_FB = (this.application as GlobalVariables).id + "isFB"
+        if (!sharedPrefUtility.getBooleanPreferences(IS_FB)) {
+            binding.btnShareLink.visibility = View.INVISIBLE
+        }
+
+        STREAK =  id + "streak"
+        (this.application as GlobalVariables).streak = sharedPrefUtility.getIntegerPreferences(STREAK)
         streak = (this.application as GlobalVariables).streak
     }
 

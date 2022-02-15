@@ -53,6 +53,13 @@ class SharedPrefUtility {
         val prefsEditor = appPreferences.edit()
         prefsEditor.putString(key, value).apply()
     }
+    fun saveBooleanPreferences(key: String?, value: Boolean) {
+        val prefsEditor = appPreferences.edit()
+        prefsEditor.putBoolean(key, value).apply()
+    }
+    fun getBooleanPreferences(key: String?) : Boolean =
+        appPreferences.getBoolean(key, true)
+
     fun saveIntegerPreferences(key: String?, value: Int) {
         val prefsEditor = appPreferences.edit()
         prefsEditor.putInt(key, value).apply()

@@ -143,6 +143,7 @@ class LogInActivity : AppCompatActivity() {
 
                     Log.d("EEEEEEEEEEEEEEEeeeewe", "signInWithEmail:success")
                     val user = auth.currentUser
+
                     updateUI(user)
                 } else {
                     Log.w("EEEEEEEEEEEEEEEeeeewe", "signInWithEmail:failure", task.exception)
@@ -173,8 +174,11 @@ class LogInActivity : AppCompatActivity() {
             //Toast.makeText(this,"walang nasave sa fb", Toast.LENGTH_SHORT).show()
             sharedPrefUtility.saveStringPreferences(USER_ID, userId)
             sharedPrefUtility.saveStringPreferences(USER_ID + "firstName", firstName)
+            sharedPrefUtility.saveBooleanPreferences(USER_ID + "isFB", true)
 
         } else {
+            sharedPrefUtility.saveBooleanPreferences(USER_ID + "isFB", false)
+            Log.d("zzzzzzzz", "loadData: " + sharedPrefUtility.getBooleanPreferences(USER_ID + "isFB"))
             //Toast.makeText(this, sharedPrefUtility.getStringPreferences(USER_ID + "firstName"), Toast.LENGTH_SHORT).show()
             (this.application as GlobalVariables).name =
                 sharedPrefUtility.getStringPreferences(USER_ID + "firstName").toString()
