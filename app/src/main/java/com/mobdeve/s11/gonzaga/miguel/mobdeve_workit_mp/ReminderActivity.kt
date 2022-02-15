@@ -109,17 +109,22 @@ class ReminderActivity : AppCompatActivity() {
 
     // Sets the time of the notification
     private fun setReminderText() {
-        if (hour == 0 && minute == 0) {
+        if (hour == 0) {
             binding.tvSelectedTime.text =
-                String.format("%02d", hour) + " : " +
-                        String.format("%02d", minute)
+                String.format("%02d", 12) + ":" +
+                        String.format("%02d", minute) + " AM"
         }
-        else if (hour > 12) {
+        else if (hour == 12) {
+            binding.tvSelectedTime.text =
+                String.format("%02d", hour ) + ":" +
+                        String.format("%02d", minute) + " PM"
+
+        }  else if (hour > 12) {
             binding.tvSelectedTime.text =
                 String.format("%02d", hour - 12) + ":" +
                         String.format("%02d", minute) + " PM"
-            Toast.makeText(this, hour.toString(), Toast.LENGTH_SHORT).show()
-        } else {
+        }
+        else {
             binding.tvSelectedTime.text =
                 String.format("%02d", hour) + ":" +
                         String.format("%02d", minute) + " AM"
