@@ -23,7 +23,7 @@ class SharedPrefUtility {
         appPreferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
     }
 
-    fun saveMyWorkoutPreferences(key: String?, value: ArrayList<WorkoutModel?>) {
+    fun saveMyWorkoutsPreferences(key: String?, value: ArrayList<WorkoutModel?>) {
         val prefsEditor = appPreferences.edit()
         val gson = Gson()
         val json = gson.toJson(value)
@@ -31,18 +31,18 @@ class SharedPrefUtility {
         prefsEditor.apply()
     }
 
-    fun getCreatedWorkouts(key: String?): ArrayList<WorkoutModel?> {
+    fun getMyWorkouts(key: String?): ArrayList<WorkoutModel?> {
 
-        val myWorkouts: ArrayList<WorkoutModel?>
+        val workout: ArrayList<WorkoutModel?>
         val gson = Gson()
-        val json: String? = appPreferences.getString(key, "null")
+        val json: String? = appPreferences.getString(key, null)
         /*val type: Type = object : TypeToken<ArrayList<ProductModel?>>() {}.type
         return gson.fromJson(json, type)*/
-        myWorkouts = when {
+        workout = when {
             json.isNullOrEmpty() -> ArrayList<WorkoutModel?>()
             else -> gson.fromJson(json, object : TypeToken<ArrayList<WorkoutModel?>>() {}.type)
         }
-        return myWorkouts
+        return workout
         //try to next may question mark
         //val type: Type = object : TypeToken<ArrayList<ProductModel?>?>() {}.type
         /*return gson.fromJson(json, type)*/

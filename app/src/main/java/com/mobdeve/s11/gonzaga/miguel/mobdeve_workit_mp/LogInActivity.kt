@@ -103,22 +103,23 @@ class LogInActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
          // Check if there is user logged in
         if(currentUser != null){
+
             (this.application as GlobalVariables).id = currentUser.uid.toString()
             (this.application as GlobalVariables).name =
                 sharedPrefUtility.getStringPreferences(currentUser.uid + "firstName").toString()
             firstName = (this.application as GlobalVariables).name
+
             val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
             //Passing data to from one page to another or in this case a string
             //gotoHomeActivity.putExtra("firstNameExtra", firstName)
             gotoHomeActivity.putExtra("firstNameExtra", firstName)
             startActivity(gotoHomeActivity)
-            // Destroys the originating activity to prevent hackers
+            // Destroys the originating activity to prevent hackerscm
             finish()
         }
     }
 
     private fun handleFacebookAccessToken(token: AccessToken) {
-        Log.d("TESSTTTT", "handleFacebookAccessToken:$token")
 
         val credential = FacebookAuthProvider.getCredential(token.token)
         auth.signInWithCredential(credential)

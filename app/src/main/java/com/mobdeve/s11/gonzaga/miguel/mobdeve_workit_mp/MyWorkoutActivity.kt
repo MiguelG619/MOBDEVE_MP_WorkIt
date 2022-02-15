@@ -21,6 +21,8 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     // Content of the data
     lateinit var workoutList: ArrayList<WorkoutModel?>
     lateinit var sharedPrefUtility: SharedPrefUtility
+    lateinit var WORKOUT: String
+    var myWorkouts: ArrayList<WorkoutModel?> = ArrayList()
 
 
 
@@ -81,12 +83,6 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
 
     fun populateList() {
         workoutList = (this.application as GlobalVariables).myWorkoutList
-        /*if ((intent.hasExtra("createdWorkout"))) {
-            var createdWorkout = intent.getSerializableExtra("createdWorkout") as WorkoutModel
-            myWorkouts.add(createdWorkout)
-        }*/
-
-
     }
 
     override fun onDeleteClick(position: Int) {
@@ -95,7 +91,6 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
 
     override fun onLoadClick(position: Int) {
         // sned workout info
-
         var gotoMyWorkoutExercisesActivity = Intent(applicationContext, MyWorkoutExercisesActivity::class.java)
         gotoMyWorkoutExercisesActivity.putExtra("position", position)
         startActivity(gotoMyWorkoutExercisesActivity)
@@ -105,27 +100,16 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         sharedPrefUtility = SharedPrefUtility(this)
     }
 
-/*
-    fun saveData() {
-        cart = (this.application as Cart).cart
-        sharedPrefUtility.saveCartPreferences(CART, cart)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        saveData()
-    }
-
-
     override fun onResume() {
         super.onResume()
         loadData()
     }
 
     fun loadData() {
-        (this.application as Cart).cart = sharedPrefUtility.getCart(CART)
-        cart = (this.application as Cart).cart
-    }*/
+        WORKOUT = (this.application as GlobalVariables).id + "myWorkouts"
+        (this.application as GlobalVariables).myWorkoutList = sharedPrefUtility.getMyWorkouts(WORKOUT)
+        myWorkouts = (this.application as GlobalVariables).myWorkoutList
+    }
 
 
     //save and load based on the user's id

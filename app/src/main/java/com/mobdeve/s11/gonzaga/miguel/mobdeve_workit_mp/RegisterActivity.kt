@@ -109,7 +109,7 @@ class RegisterActivity : AppCompatActivity() {
         USER_ID = userId
         sharedPrefUtility.saveStringPreferences(USER_ID, userId)
         sharedPrefUtility.saveStringPreferences(USER_ID + "firstName", firstName)
-       // Toast.makeText(this, sharedPrefUtility.getStringPreferences(USER_ID + "firstName"), Toast.LENGTH_SHORT).show()
+       /*Toast.makeText(this, sharedPrefUtility.getStringPreferences(USER_ID + "firstName"), Toast.LENGTH_SHORT).show()*/
     }
 
 

@@ -22,6 +22,8 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
     lateinit var workoutName: String
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
     lateinit var sharedPrefUtility: SharedPrefUtility
+    lateinit var WORKOUT: String
+    var myWorkouts: ArrayList<WorkoutModel?> = ArrayList()
 
     lateinit var exerciseList: ArrayList<ExerciseModel?>
 
@@ -36,6 +38,7 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
         initPrefs()
+        loadData()
         populateList()
 
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
@@ -60,12 +63,12 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
                 var createdWorkout = WorkoutModel(workoutName, createdExerciseList, createdExerciseList.size)
                 Log.d("sssssssssssssss", "createdWorkout: " + createdWorkout.workoutName)
 
-                var myWorkouts = (this.application as GlobalVariables).myWorkoutList
+               /* var myWorkouts = (this.application as GlobalVariables).myWorkoutList
+                myWorkouts.add(createdWorkout)*/
                 myWorkouts.add(createdWorkout)
                 emptyTempArray()
                 //var createdExerciseListSize = createdExerciseList.size
-
-
+                saveData()
                  val gotoMyWorkoutActivity = Intent(applicationContext, MyWorkoutActivity::class.java)
                 //send index to update in adapter
                 /*var workoutDAOSizeIndex = workoutDAO.myWorkoutList.size - 1
@@ -84,9 +87,25 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
         tempExerciseList.clear()
     }
 
-    // save workout created and load  based on the user's id
 
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
 
+    fun loadData() {
+        WORKOUT = (this.application as GlobalVariables).id + "myWorkouts"
+        (this.application as GlobalVariables).myWorkoutList = sharedPrefUtility.getMyWorkouts(WORKOUT)
+        myWorkouts = (this.application as GlobalVariables).myWorkoutList
+    }
+
+    fun saveData() {
+        (this.application as GlobalVariables).myWorkoutList = myWorkouts
+        sharedPrefUtility.saveMyWorkoutsPreferences(WORKOUT, myWorkouts)
+        var g = sharedPrefUtility.getMyWorkouts(WORKOUT)
+        Log.d("zzzzzzzzz", "workouts " + g[0]?.workoutName)
+
+        sharedPrefUtility.saveMyWorkoutsPreferences(WORKOUT, myWorkouts)
+    }
 
     private fun populateList() {
         exerciseList = (this.application as GlobalVariables).tempExerciseList
@@ -110,17 +129,9 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
     }
 
 
-    fun initPrefs() {
-        sharedPrefUtility = SharedPrefUtility(this)
-    }
 
 
-    /*fun saveData() {
-        cart = (this.application as Cart).cart
-        sharedPrefUtility.saveCartPreferences(CART, cart)
-    }
-
-    override fun onPause() {
+   /* override fun onPause() {
         super.onPause()
         saveData()
     }
@@ -128,11 +139,7 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
     override fun onResume() {
         super.onResume()
         loadData()
-    }
-
-    fun loadData() {
-        (this.application as Cart).cart = sharedPrefUtility.getCart(CART)
-        cart = (this.application as Cart).cart
     }*/
+
 
 }

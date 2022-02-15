@@ -69,6 +69,11 @@ class RestTimeActivity : AppCompatActivity() {
         }.start()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goBack()
+    }
+
     fun setWorkout() {
         workoutName = intent.getStringExtra("workoutName").toString()
         if (workoutName.equals("Burst Workout"))
