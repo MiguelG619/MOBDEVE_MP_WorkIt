@@ -10,8 +10,12 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityStre
 import android.graphics.Bitmap
 import android.view.View
 import android.graphics.Canvas
+import android.provider.Settings
+import android.util.Log
+import android.widget.Toast
 import com.facebook.FacebookSdk
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 
 
 class StreakActivity : AppCompatActivity() {
@@ -20,6 +24,10 @@ class StreakActivity : AppCompatActivity() {
     lateinit var shareDialog: ShareDialog
     lateinit var binding: ActivityStreakBinding
     lateinit var sharePhotoContent: SharePhotoContent
+
+    lateinit var sharedPrefUtility: SharedPrefUtility
+    lateinit var STREAK: String
+    var streak = 0
 
     // Get latest photo or let user choose the screenshotted picture
     /*imageView.setImageResource(R.drawable.story)*/
@@ -32,12 +40,15 @@ class StreakActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        initPrefs()
+
         FacebookSdk.sdkInitialize(applicationContext);
 
         callbackManager = CallbackManager.Factory.create()
         shareDialog = ShareDialog(this)
-
-        binding.tvNumber.text = (this.application as GlobalVariables).streak.toString()
+        loadData()
+        Log.d("sdfsdfdsffsd", "loadData: "+ streak)
+        binding.tvNumber.text = streak.toString()
 
         binding.btnShareLink.setOnClickListener {
             //startForResult.launch(Intent(this, AnotherActivity::class.java))
@@ -61,6 +72,30 @@ class StreakActivity : AppCompatActivity() {
 
 
     }
+
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
+ /*   override fun onResume() {
+        super.onResume()
+        loadData()
+    }*/
+
+    fun loadData() {
+        STREAK = (this.application as GlobalVariables).id + "streak"
+        (this.application as GlobalVariables).streak = sharedPrefUtility.getIntegerPreferences(STREAK)!!
+        streak = (this.application as GlobalVariables).streak
+    }
+
+
+    /*fun saveData() {
+        sharedPrefUtility.saveIntegerPreferences(STREAK, streak)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveData()
+    }*/
 
 
     fun screenShot(): Bitmap? {

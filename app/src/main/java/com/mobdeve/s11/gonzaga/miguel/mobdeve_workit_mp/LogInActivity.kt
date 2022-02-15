@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityLogInBinding
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 
 
 class LogInActivity : AppCompatActivity() {
@@ -28,6 +29,8 @@ class LogInActivity : AppCompatActivity() {
     lateinit var email: String
     lateinit var password: String
     var firstName: String = "User"
+    lateinit var sharedPrefUtility: SharedPrefUtility
+    lateinit var USER_ID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,8 @@ class LogInActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setContentView(binding!!.root)
+
+        initPrefs()
 
         auth = Firebase.auth
 
@@ -52,7 +57,6 @@ class LogInActivity : AppCompatActivity() {
         }
 
         var fbLogIn = binding!!.btnFBLogIn
-        firstName = "Sean"
 
         callbackManager = CallbackManager.Factory.create()
         fbLogIn.setPermissions(Arrays.asList("user_friends"))
@@ -65,12 +69,10 @@ class LogInActivity : AppCompatActivity() {
                     try {
                         if (obj!!.has("id")) {
                             firstName = obj.getString("first_name")
-                            Log.d("facebookdata", obj.getString("name"))
+
                             Log.d("facebookdata", firstName)
 
                             handleFacebookAccessToken(loginResult!!.accessToken)
-
-
                         }
                     } catch (e: Exception) {
                         e.stackTrace
@@ -101,6 +103,10 @@ class LogInActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
          // Check if there is user logged in
         if(currentUser != null){
+            (this.application as GlobalVariables).id = currentUser.uid.toString()
+            (this.application as GlobalVariables).name =
+                sharedPrefUtility.getStringPreferences(currentUser.uid + "firstName").toString()
+            firstName = (this.application as GlobalVariables).name
             val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
             //Passing data to from one page to another or in this case a string
             //gotoHomeActivity.putExtra("firstNameExtra", firstName)
@@ -121,20 +127,13 @@ class LogInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("TESSTTTT", "signInWithCredential:success")
                     val user = auth.currentUser
-
-                    val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
-                    //Passing data to from one page to another or in this case a string
-                    //gotoHomeActivity.putExtra("firstNameExtra", firstName)
-                    gotoHomeActivity.putExtra("firstNameExtra", firstName)
-                    startActivity(gotoHomeActivity)
-                            // Destroys the originating activity to prevent hackers
-                    finish()
+                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("TESSTTTT", "signInWithCredential:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+                    /*updateUI(null)*/
                 }
             }
     }
@@ -151,18 +150,37 @@ class LogInActivity : AppCompatActivity() {
                     Log.w("EEEEEEEEEEEEEEEeeeewe", "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Wrong information given. Sign up if you don't have an account",
                         Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+
                 }
             }
     }
 
     fun updateUI(user: FirebaseUser?) {
         if(user != null){
+            (this.application as GlobalVariables).id = user.uid
             val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
             //Passing data to from one page to another or in this case a string
+            saveData()
             gotoHomeActivity.putExtra("firstNameExtra", firstName)
             startActivity(gotoHomeActivity)
             finish()
+        }
+    }
+    fun saveData() {
+        var userId = (this.application as GlobalVariables).id
+        USER_ID = userId
+
+        // For facebook first time creation
+        if (sharedPrefUtility.getStringPreferences((USER_ID)) == "Nothing Saved") {
+            //Toast.makeText(this,"walang nasave sa fb", Toast.LENGTH_SHORT).show()
+            sharedPrefUtility.saveStringPreferences(USER_ID, userId)
+            sharedPrefUtility.saveStringPreferences(USER_ID + "firstName", firstName)
+
+        } else {
+            //Toast.makeText(this, sharedPrefUtility.getStringPreferences(USER_ID + "firstName"), Toast.LENGTH_SHORT).show()
+            (this.application as GlobalVariables).name =
+                sharedPrefUtility.getStringPreferences(USER_ID + "firstName").toString()
+            firstName = (this.application as GlobalVariables).name
         }
     }
 
@@ -212,6 +230,16 @@ class LogInActivity : AppCompatActivity() {
         super.onDestroy()
         accessTokenTracker.stopTracking()
     }
+
+  /*  fun loadData() {
+        (this.application as GlobalVariables).id = sharedPrefUtility.getStringPreferences(CART)
+        cart = (this.application as Cart).cart
+    }*/
+
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
+
 
 
 }

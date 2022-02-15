@@ -52,7 +52,7 @@ class AddExerciseToWorkoutActivity : AppCompatActivity() {
                 exerciseSets,
                 exerciseRest)
             )
-            Toast.makeText(this,  exerciseName+ " is added to your custom workout!", Toast.LENGTH_SHORT).show()
+
             val gotoCreateWorkoutActivity = Intent(applicationContext, CreateWorkoutActivity::class.java)
             startActivity(gotoCreateWorkoutActivity)
         }

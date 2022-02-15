@@ -61,7 +61,7 @@ class ExerciseDAOArrayList {
                         "Press into your palms to lift your body. " +
                         "Lower yourself until your elbows are bent between 45 and 90 degrees. " +
                         "Push yourself back up slowly until your arms are almost straight and repeat. ",
-                R.drawable.triceps_dips, 150, 2, 3)
+                R.drawable.triceps_dips, 15, 2, 3)
         )
         allExercisesList.add(
             ExerciseModel( "High Knees" ,

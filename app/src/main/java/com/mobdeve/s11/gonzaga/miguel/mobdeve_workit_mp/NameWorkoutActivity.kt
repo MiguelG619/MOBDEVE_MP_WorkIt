@@ -14,12 +14,14 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityCrea
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityNameWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 
 class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
     lateinit var binding: ActivityNameWorkoutBinding
     lateinit var exerciseAdapter: ExerciseAdapter
     lateinit var workoutName: String
     var workoutDAO: WorkoutDAOArrayList = WorkoutDAOArrayList()
+    lateinit var sharedPrefUtility: SharedPrefUtility
 
     lateinit var exerciseList: ArrayList<ExerciseModel?>
 
@@ -33,7 +35,9 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
 
         Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
 
+        initPrefs()
         populateList()
+
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding.rvExerciseList.adapter = exerciseAdapter
         binding.rvExerciseList.layoutManager = LinearLayoutManager(applicationContext,
@@ -52,17 +56,15 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
                 workoutName = binding.etWorkoutName.text.toString()
                 workoutName.capitalize()
 
-                var createdExerciseList = (this.application as GlobalVariables).tempExerciseList
+                var createdExerciseList = ArrayList((this.application as GlobalVariables).tempExerciseList)
                 var createdWorkout = WorkoutModel(workoutName, createdExerciseList, createdExerciseList.size)
                 Log.d("sssssssssssssss", "createdWorkout: " + createdWorkout.workoutName)
 
                 var myWorkouts = (this.application as GlobalVariables).myWorkoutList
                 myWorkouts.add(createdWorkout)
-
-               // Log.d("fsdsdf", "createdwokrout "+ myWorkouts[1]!!.workoutName)
-
-
+                emptyTempArray()
                 //var createdExerciseListSize = createdExerciseList.size
+
 
                  val gotoMyWorkoutActivity = Intent(applicationContext, MyWorkoutActivity::class.java)
                 //send index to update in adapter
@@ -77,6 +79,12 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
 
     }
 
+    fun emptyTempArray() {
+        var tempExerciseList =  (this.application as GlobalVariables).tempExerciseList
+        tempExerciseList.clear()
+    }
+
+    // save workout created and load  based on the user's id
 
 
 
@@ -100,4 +108,31 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
         gotoViewExerciseActivity.putExtra("rest", exerciseList[positionExercise]?.restTime)
         startActivity(gotoViewExerciseActivity)
     }
+
+
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
+
+
+    /*fun saveData() {
+        cart = (this.application as Cart).cart
+        sharedPrefUtility.saveCartPreferences(CART, cart)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
+    fun loadData() {
+        (this.application as Cart).cart = sharedPrefUtility.getCart(CART)
+        cart = (this.application as Cart).cart
+    }*/
+
 }

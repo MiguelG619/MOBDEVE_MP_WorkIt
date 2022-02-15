@@ -9,21 +9,26 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityReminderBinding
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 import java.util.*
 
 class ReminderActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityReminderBinding
+    lateinit var sharedPrefUtility: SharedPrefUtility
     lateinit var materialTimePicker : MaterialTimePicker
     lateinit var calendar: Calendar
     lateinit var pendingIntent: PendingIntent
     lateinit var alarmManager: AlarmManager
     var hour = 0
     var minute = 0
+    lateinit var HOUR: String
+    lateinit var MINUTE: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +42,7 @@ class ReminderActivity : AppCompatActivity() {
         /*hour = (this.application as GlobalVariables).reminderHour
         minute = (this.application as GlobalVariables).reminderMinute*/
 
+        initPrefs()
         //Initializes the UI and Notification
         createNotificationChannel()
         setReminderText()
@@ -55,6 +61,29 @@ class ReminderActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
+    fun loadData() {
+        HOUR = (this.application as GlobalVariables).id + "hourReminder"
+        MINUTE = (this.application as GlobalVariables).id + "minuteReminder"
+        hour = sharedPrefUtility.getIntegerPreferences(HOUR)
+        minute = sharedPrefUtility.getIntegerPreferences(MINUTE)
+    }
+
+    fun saveData() {
+        sharedPrefUtility.saveIntegerPreferences(HOUR, hour)
+        sharedPrefUtility.saveIntegerPreferences(MINUTE, minute)
+/*        var g = sharedPrefUtility.getIntegerPreferences(STREAK)
+        Log.d("zzzzzzzzz", STREAK +"saveData: streak "+ streak + "dsdsdsds" + g)*/
     }
 
     // Creates the notifcation channel to be used when the notfication is triggered
@@ -137,6 +166,7 @@ class ReminderActivity : AppCompatActivity() {
         /*(this.application as GlobalVariables).reminderHour = hour
         (this.application as GlobalVariables).reminderMinute = minute*/
         //reminder = calendar
+        saveData()
         Toast.makeText(this, "Notification time set Successfully!", Toast.LENGTH_SHORT).show()
 
     }

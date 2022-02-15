@@ -29,7 +29,6 @@ class RunningExerciseActivity : AppCompatActivity() {
         var exerciseNumber = intent.getIntExtra("exerciseNumber", 0)
         val position = intent.getIntExtra("position", 10)
         var doneSets = intent.getIntExtra("doneSets", 0)
-        Toast.makeText(this, doneSets.toString() + "doneSets ruunning", Toast.LENGTH_SHORT).show()
         val workoutName = intent.getStringExtra("workoutName")
         val args = intent.getBundleExtra("BUNDLE")
         exercises = args!!.getSerializable("ARRAYLIST") as ArrayList<ExerciseModel?>

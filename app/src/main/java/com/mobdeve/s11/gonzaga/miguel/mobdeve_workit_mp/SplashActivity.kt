@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
 
         binding.appCompatImageView.animate().setDuration(1500).alpha(1f)
         binding.tvName.animate().setDuration(2500).alpha(1f).withEndAction {
-            val i = Intent(this, HomeActivity::class.java)
+            val i = Intent(this, LogInActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()

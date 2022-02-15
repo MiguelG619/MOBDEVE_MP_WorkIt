@@ -1,5 +1,6 @@
 package com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.Toast
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -18,17 +20,19 @@ import com.google.firebase.ktx.Firebase
 
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityRegisterBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.User
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var database: DatabaseReference
 
     lateinit var firstName: String
     lateinit var lastName: String
     lateinit var email: String
     lateinit var password: String
+    lateinit var sharedPrefUtility: SharedPrefUtility
+    lateinit var USER_ID: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,50 +46,19 @@ class RegisterActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-
+        initPrefs()
 
         binding.mcvContinue.setOnClickListener {
-
-            /*if (isUserInputValid()) {*/
-                auth.createUserWithEmailAndPassword("email6@gmail.com", "123456")
+            firstName = binding.edtFname.text.toString()
+            email = binding.edtEmail.text.toString()
+            password = binding.edtCpwd.text.toString()
+            if (isUserInputValid()) {
+                auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
-                            var user = User("Karl", "yu", "email5@gmail.com")
-                           /* var userID = Firebase.auth.currentUser!!.uid
-                            Toast.makeText(
-                                this,
-                                "${user.firstName} \n ${user.lastName} \n ${user.email} \n ${userID}",
-                                Toast.LENGTH_SHORT
-                            ).show()*/
-
-
-                            var userId = Firebase.auth.currentUser!!.uid
-                            /*database = Firebase.database.reference
-                            database.child("users").child(userId).setValue(user)*/
-                                    FirebaseDatabase.getInstance().getReference("users")
-                                        .child(userId).setValue(user)
-                                .addOnCompleteListener(this) { task ->
-                                    if (task.isSuccessful) {
-                                        Toast.makeText(
-                                            this,
-                                            "${user.firstName} \n ${user.lastName} \n ${user.email} \n ${userId} SUCESS",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else {
-                                        Toast.makeText(
-                                            this,
-                                            "fail",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                }
-
-
-
-                            /*val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
-                            startActivity(gotoHomeActivity)
-                            finish()*/
+                            val user = auth.currentUser
+                            updateUI(user)
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -94,8 +67,10 @@ class RegisterActivity : AppCompatActivity() {
                             } catch (e: FirebaseAuthUserCollisionException) {
                                 Log.d(
                                     "ERRrrrrrrrrrr",
-                                    "FirebaseAuthUserCollisionException " + e.toString()
-                                )
+                                    "FirebaseAuthUserCollisionException " + e.toString())
+                                Toast.makeText(this, "Failed to register! Email is already in use by another account!",
+                                    Toast.LENGTH_SHORT).show()
+
                                 // show error toast ot user ,user already exist
                             } catch (e: FirebaseNetworkException) {
                                 Log.d("ERRrrrrrrrrrr", "FirebaseNetworkException " + e.toString())
@@ -106,15 +81,36 @@ class RegisterActivity : AppCompatActivity() {
                         }
                         //updateUI(null)
                     }
-            /*} else {
+                } else {
                 Toast.makeText(this, "Failed to register! Try again!", Toast.LENGTH_SHORT).show()
-            }*/
+            }
+            }
         }
+
+    fun updateUI(user: FirebaseUser?) {
+        if(user != null){
+            (this.application as GlobalVariables).id = user.uid.toString()
+            saveData()
+            Firebase.auth.signOut()
+            val gotoHomeActivity  = Intent(applicationContext, LogInActivity::class.java)
+            //Passing data to from one page to another or in this case a string
+            gotoHomeActivity.putExtra("firstNameExtra", firstName)
+            startActivity(gotoHomeActivity)
+            finish()
         }
+    }
 
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
 
-
-
+    fun saveData() {
+        var userId = (this.application as GlobalVariables).id
+        USER_ID = userId
+        sharedPrefUtility.saveStringPreferences(USER_ID, userId)
+        sharedPrefUtility.saveStringPreferences(USER_ID + "firstName", firstName)
+       // Toast.makeText(this, sharedPrefUtility.getStringPreferences(USER_ID + "firstName"), Toast.LENGTH_SHORT).show()
+    }
 
 
     fun isUserInputValid(): Boolean {

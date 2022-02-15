@@ -10,6 +10,6 @@ class GlobalVariables: Application() {
     var streak: Int = 0
     var tempExerciseList = ArrayList<ExerciseModel?>()
     var myWorkoutList = ArrayList<WorkoutModel?>()
-    var reminderMinute: Int = 0
-    var reminderHour: Int = 0
+    lateinit var id: String
+    lateinit var name: String
 }

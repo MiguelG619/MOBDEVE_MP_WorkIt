@@ -11,6 +11,7 @@ import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.Workou
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityMyWorkoutBinding
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.ExerciseModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 
 class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListener {
     // Set what xml file you want to access
@@ -19,6 +20,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     var workoutAdapter: WorkoutAdapter? = null
     // Content of the data
     lateinit var workoutList: ArrayList<WorkoutModel?>
+    lateinit var sharedPrefUtility: SharedPrefUtility
 
 
 
@@ -30,7 +32,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
 
         setContentView(binding!!.root)
 
-
+        initPrefs()
         populateList()
         // populates the user adapter
         workoutAdapter = WorkoutAdapter(workoutList, this)
@@ -61,10 +63,8 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         binding!!.tvWorkoutNumber.text = "${workoutList.size} Workouts"
 
         binding!!.tvCreate.setOnClickListener {
-            emptyTempArray()
             val gotoCreateWorkoutActivity = Intent(applicationContext, CreateWorkoutActivity::class.java)
             startActivity(gotoCreateWorkoutActivity)
-
         }
 
         binding!!.ivBack.setOnClickListener {
@@ -77,19 +77,16 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
-    fun emptyTempArray() {
-        var tempExerciseList =  (this.application as GlobalVariables).tempExerciseList
-        tempExerciseList.clear()
 
-    }
 
     fun populateList() {
-        var myWorkouts = (this.application as GlobalVariables).myWorkoutList
+        workoutList = (this.application as GlobalVariables).myWorkoutList
         /*if ((intent.hasExtra("createdWorkout"))) {
             var createdWorkout = intent.getSerializableExtra("createdWorkout") as WorkoutModel
             myWorkouts.add(createdWorkout)
         }*/
-        workoutList = myWorkouts
+
+
     }
 
     override fun onDeleteClick(position: Int) {
@@ -104,4 +101,32 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         startActivity(gotoMyWorkoutExercisesActivity)
     }
 
+    fun initPrefs() {
+        sharedPrefUtility = SharedPrefUtility(this)
+    }
+
+/*
+    fun saveData() {
+        cart = (this.application as Cart).cart
+        sharedPrefUtility.saveCartPreferences(CART, cart)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveData()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
+    fun loadData() {
+        (this.application as Cart).cart = sharedPrefUtility.getCart(CART)
+        cart = (this.application as Cart).cart
+    }*/
+
+
+    //save and load based on the user's id
 }
