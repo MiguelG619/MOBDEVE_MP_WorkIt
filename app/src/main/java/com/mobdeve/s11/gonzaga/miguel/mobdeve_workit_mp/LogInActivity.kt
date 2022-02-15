@@ -114,7 +114,7 @@ class LogInActivity : AppCompatActivity() {
             //gotoHomeActivity.putExtra("firstNameExtra", firstName)
             gotoHomeActivity.putExtra("firstNameExtra", firstName)
             startActivity(gotoHomeActivity)
-            // Destroys the originating activity to prevent hackers
+            // Destroys the originating activity to prevent hackerscm
             finish()
         }
     }
