@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.dataAccessObjects.WorkoutDAOArrayList
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.databinding.ActivityHomeBinding
+import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.model.WorkoutModel
 import com.mobdeve.s11.gonzaga.miguel.mobdeve_workit_mp.utils.SharedPrefUtility
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,8 +18,9 @@ class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
     lateinit var firstName: String
     lateinit var sharedPrefUtility: SharedPrefUtility
-    lateinit var MY_WORKOUTS: String
-    var myWorkoutsNumber = 0
+    lateinit var WORKOUT: String
+    var myWorkouts: ArrayList<WorkoutModel?> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initPrefs()
+        loadData()
 
 
         /*if (intent.hasExtra("firstNameExtra")) {
@@ -46,8 +49,8 @@ class HomeActivity : AppCompatActivity() {
 
 
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
-
-        myWorkoutsNumber = (this.application as GlobalVariables).myWorkoutList.size
+        var myWorkoutsNumber = myWorkouts.size
+        Log.d("zzzzz", "loadData: "+myWorkoutsNumber)
         //val myWorkoutsNumber = WorkoutDAOArrayList().myWorkoutList.size
         binding.tvDaysMyWorkout.text = "$myWorkoutsNumber Workouts"
 
@@ -74,16 +77,11 @@ class HomeActivity : AppCompatActivity() {
         super.onResume()
         loadData()
     }
-    fun loadData() {
 
-        /*MY_WORKOUTS = (this.application as GlobalVariables).id + "myWorkouts"
-        Toast.makeText(this, sharedPrefUtility.getCreatedWorkouts(MY_WORKOUTS).size.toString(),
-            Toast.LENGTH_SHORT).show()
-        if (sharedPrefUtility.getCreatedWorkouts(MY_WORKOUTS).isEmpty()) {
-            Toast.makeText(this, "empty",
-                Toast.LENGTH_SHORT).show()
-            myWorkoutsNumber = 0
-        } else myWorkoutsNumber = sharedPrefUtility.getCreatedWorkouts(MY_WORKOUTS).size*/
+    fun loadData() {
+        WORKOUT = (this.application as GlobalVariables).id + "myWorkouts"
+        (this.application as GlobalVariables).myWorkoutList = sharedPrefUtility.getMyWorkouts(WORKOUT)
+        myWorkouts = (this.application as GlobalVariables).myWorkoutList
 
     }
 }

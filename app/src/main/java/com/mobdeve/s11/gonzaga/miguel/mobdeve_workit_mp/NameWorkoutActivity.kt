@@ -47,6 +47,10 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
             LinearLayoutManager.VERTICAL,
             false)
 
+        binding.tvBack.setOnClickListener {
+            var gotoCreateWorkoutActivity = Intent(applicationContext, CreateWorkoutActivity::class.java)
+            startActivity(gotoCreateWorkoutActivity)
+        }
 
         binding.tvDone.setOnClickListener {
 

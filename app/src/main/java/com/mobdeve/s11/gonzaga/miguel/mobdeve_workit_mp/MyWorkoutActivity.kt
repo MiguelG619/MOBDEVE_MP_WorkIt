@@ -79,8 +79,6 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
-
-
     fun populateList() {
         workoutList = (this.application as GlobalVariables).myWorkoutList
     }
