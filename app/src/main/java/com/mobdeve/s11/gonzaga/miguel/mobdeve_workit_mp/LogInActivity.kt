@@ -122,12 +122,12 @@ class LogInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d("TESSTTTT", "signInWithCredential:success")
+                    Log.d("Test", "signInWithCredential:success")
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w("TESSTTTT", "signInWithCredential:failure", task.exception)
+                    Log.w("Test", "signInWithCredential:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
                     /*updateUI(null)*/
@@ -141,12 +141,12 @@ class LogInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
-                    Log.d("EEEEEEEEEEEEEEEeeeewe", "signInWithEmail:success")
+                    Log.d("Test", "signInWithEmail:success")
                     val user = auth.currentUser
 
                     updateUI(user)
                 } else {
-                    Log.w("EEEEEEEEEEEEEEEeeeewe", "signInWithEmail:failure", task.exception)
+                    Log.w("Test", "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Wrong information given. Sign up if you don't have an account",
                         Toast.LENGTH_SHORT).show()
 
@@ -160,6 +160,9 @@ class LogInActivity : AppCompatActivity() {
             val gotoHomeActivity  = Intent(applicationContext, HomeActivity::class.java)
             //Passing data to from one page to another or in this case a string
             saveData()
+            (this.application as GlobalVariables).name =
+                sharedPrefUtility.getStringPreferences(user.uid + "firstName").toString()
+            firstName = (this.application as GlobalVariables).name
             gotoHomeActivity.putExtra("firstNameExtra", firstName)
             startActivity(gotoHomeActivity)
             finish()
@@ -178,7 +181,7 @@ class LogInActivity : AppCompatActivity() {
 
         } else {
             sharedPrefUtility.saveBooleanPreferences(USER_ID + "isFB", false)
-            Log.d("zzzzzzzz", "loadData: " + sharedPrefUtility.getBooleanPreferences(USER_ID + "isFB"))
+            Log.d("Test", "loadData: " + sharedPrefUtility.getBooleanPreferences(USER_ID + "isFB"))
             //Toast.makeText(this, sharedPrefUtility.getStringPreferences(USER_ID + "firstName"), Toast.LENGTH_SHORT).show()
             (this.application as GlobalVariables).name =
                 sharedPrefUtility.getStringPreferences(USER_ID + "firstName").toString()
