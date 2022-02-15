@@ -24,19 +24,23 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding!!.root)
 
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
         populateList()
+
+
+        // Initalizes the adapters for the recyclerview
         workoutAdapter = WorkoutAdapter(workoutList, this)
         binding.rvExercises.adapter = workoutAdapter
         binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
 
-
+        // Initializes the back button
         binding. ivBack.setOnClickListener {
             // Load to Home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
@@ -44,7 +48,7 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
 
         }
 
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+
 
 
     }
@@ -57,13 +61,8 @@ class BurstWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickList
         TODO("Not yet implemented")
     }
 
-    fun populateExerciseData() {
-
-    }
-
     override fun onLoadClick(position: Int) {
-        // Send data first based on the position
-
+       // Goes to the exercises of the workout
         var gotoBurstWorkoutExercisesActivity = Intent(applicationContext, BurstWorkoutExercisesActivity::class.java)
         gotoBurstWorkoutExercisesActivity.putExtra("position", position)
         startActivity(gotoBurstWorkoutExercisesActivity)

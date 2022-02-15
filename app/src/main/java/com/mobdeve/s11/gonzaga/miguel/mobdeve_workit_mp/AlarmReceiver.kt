@@ -19,6 +19,7 @@ class AlarmReceiver: BroadcastReceiver() {
         intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, i, 0)
 
+        // Initializes the notification alert
         val soundUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context!!, "WorkItId")
             .setSmallIcon(R.drawable.ic_launcher_foreground)

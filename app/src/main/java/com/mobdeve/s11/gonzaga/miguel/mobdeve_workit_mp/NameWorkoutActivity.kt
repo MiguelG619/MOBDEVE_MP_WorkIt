@@ -30,17 +30,17 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNameWorkoutBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
         setContentView(binding.root)
 
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
-
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
         initPrefs()
         loadData()
         populateList()
 
+        // Initalizes the adapters for the recyclerview
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding.rvExerciseList.adapter = exerciseAdapter
         binding.rvExerciseList.layoutManager = LinearLayoutManager(applicationContext,
@@ -53,8 +53,7 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
         }
 
         binding.tvDone.setOnClickListener {
-
-
+            // Checks if the name entered is blank
             if (binding.etWorkoutName.text.toString().trim().isEmpty()) {
                 binding.etWorkoutName.error = "Please enter the workout name you want!."
                 binding.etWorkoutName.requestFocus()
@@ -63,21 +62,16 @@ class NameWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickList
                 workoutName = binding.etWorkoutName.text.toString()
                 workoutName.capitalize()
 
+                // Adds the created exercises to the user's workouts
                 var createdExerciseList = ArrayList((this.application as GlobalVariables).tempExerciseList)
                 var createdWorkout = WorkoutModel(workoutName, createdExerciseList, createdExerciseList.size)
-                Log.d("sssssssssssssss", "createdWorkout: " + createdWorkout.workoutName)
-
-               /* var myWorkouts = (this.application as GlobalVariables).myWorkoutList
-                myWorkouts.add(createdWorkout)*/
                 myWorkouts.add(createdWorkout)
+
                 emptyTempArray()
-                //var createdExerciseListSize = createdExerciseList.size
                 saveData()
+
                  val gotoMyWorkoutActivity = Intent(applicationContext, MyWorkoutActivity::class.java)
                 //send index to update in adapter
-                /*var workoutDAOSizeIndex = workoutDAO.myWorkoutList.size - 1
-                gotoMyWorkoutActivity.putExtra("index", workoutDAOSizeIndex)
-                gotoMyWorkoutActivity.putExtra("createdWorkout", createdWorkout)*/
                 startActivity(gotoMyWorkoutActivity)
             }
 

@@ -35,11 +35,11 @@ class StreakActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStreakBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
+        // Hides the action bar, initializes the navbar, and initialzies the shared prefs
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_streak)
         initPrefs()
 
         FacebookSdk.sdkInitialize(applicationContext);
@@ -50,8 +50,10 @@ class StreakActivity : AppCompatActivity() {
         Log.d("sdfsdfdsffsd", "loadData: "+ streak)
         binding.tvNumber.text = streak.toString()
 
+
         binding.btnShareLink.setOnClickListener {
             //startForResult.launch(Intent(this, AnotherActivity::class.java))
+            //Screenshots the streak to be posted
             var bitmap = screenShot()
             binding.btnShareLink.visibility = View.VISIBLE
             binding.bottomNavigation.visibility = View.VISIBLE
@@ -66,11 +68,6 @@ class StreakActivity : AppCompatActivity() {
 
             shareDialog.show(sharePhotoContent)
         }
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_streak)
-
-
-
     }
 
     fun initPrefs() {

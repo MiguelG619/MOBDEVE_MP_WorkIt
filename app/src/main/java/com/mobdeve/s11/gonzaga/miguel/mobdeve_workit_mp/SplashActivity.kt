@@ -13,14 +13,13 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
-        setContentView(binding.root)
-
+        // Initializes the splash activity in the start of the app then goes to the login activity
         binding.appCompatImageView.alpha = 0f
         binding.tvName.alpha = 0f
-
         binding.appCompatImageView.animate().setDuration(1500).alpha(1f)
         binding.tvName.animate().setDuration(2500).alpha(1f).withEndAction {
             val i = Intent(this, LogInActivity::class.java)

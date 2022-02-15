@@ -29,22 +29,22 @@ class BusyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItem
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBurstWorkoutExercisesBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
-        supportActionBar!!.hide()
-
-        // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
         populateList()
+
+        // Initalizes the adapters for the recyclerview
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding.rvExercises.adapter = exerciseAdapter
         binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
 
-
+        // Start of workout
         binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
             val args = Bundle()
@@ -61,11 +61,6 @@ class BusyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItem
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
         }
-
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
-
-
     }
 
     fun populateList() {
@@ -76,6 +71,7 @@ class BusyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItem
 
     }
 
+    // Updates text views
     fun updateText(position: Int) {
         val workoutName = workoutDAO.busyWorkout[position]!!.workoutName
         binding.tvTitle.text = workoutName
@@ -93,9 +89,8 @@ class BusyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItem
         TODO("Not yet implemented")
     }
 
-
     override fun onLoadClick(positionExercise: Int) {
-        // Send data first based on the position
+        // Goes to viewing of exercise activity
         var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
         gotoViewExerciseActivity.putExtra("title", exerciseList[positionExercise]?.title)
         gotoViewExerciseActivity.putExtra("description", exerciseList[positionExercise]?.description)

@@ -26,42 +26,45 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
 
-        supportActionBar?.hide()
+
 
         setContentView(binding.root)
 
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
         initPrefs()
         loadData()
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
 
-        /*if (intent.hasExtra("firstNameExtra")) {
-            firstName = intent.getStringExtra("firstNameExtra").toString()
-        }*/
+        // Gets the name of the logged in user
         firstName = (this.application as GlobalVariables).name
         binding!!.tvUsername.text = "Hello, $firstName"
 
+        // Format date to current time
         val c: Date = Calendar.getInstance().time
-
         val df = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
         val formattedDate: String = df.format(c)
-
         binding.tvDate.text = formattedDate
 
-
-        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
+        //Sets the number of workouts created
         var myWorkoutsNumber = myWorkouts.size
-        Log.d("zzzzz", "loadData: "+myWorkoutsNumber)
-        //val myWorkoutsNumber = WorkoutDAOArrayList().myWorkoutList.size
         binding.tvDaysMyWorkout.text = "$myWorkoutsNumber Workouts"
 
+        // Goes to Burst Workout
          binding.mcvRowBurst.setOnClickListener {
              val gotoBurstActivity = Intent(applicationContext, BurstWorkoutActivity::class.java)
              startActivity(gotoBurstActivity)
          }
+
+        // Goes to Busy Schedule Workout
          binding.mcvRowBusy.setOnClickListener {
              val gotoBusyScheduleWorkoutActivityActivity = Intent(applicationContext, BusyScheduleWorkoutActivity::class.java)
              startActivity(gotoBusyScheduleWorkoutActivityActivity)
          }
+
+        // Goes to My Workout
         binding.mcvRowMyWorkout.setOnClickListener {
             val gotoMyWorkoutActivityActivity = Intent(applicationContext, MyWorkoutActivity::class.java)
             startActivity(gotoMyWorkoutActivityActivity)

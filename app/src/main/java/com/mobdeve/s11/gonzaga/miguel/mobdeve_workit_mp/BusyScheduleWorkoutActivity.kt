@@ -27,13 +27,16 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusyScheduleWorkoutBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
         setContentView(binding.root)
 
 
-        // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
         populateList()
+
+        // Initalizes the adapters for the recyclerview
         workoutAdapter = WorkoutAdapter(workoutList, this)
         binding.rvExercises.adapter = workoutAdapter
         binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
@@ -48,10 +51,6 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemCl
             startActivity(gotoHomeActivity)
 
         }
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
-
-
     }
 
     fun populateList() {
@@ -62,10 +61,6 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemCl
         TODO("Not yet implemented")
     }
 
-    fun populateExerciseData() {
-
-    }
-
     override fun onLoadClick(position: Int) {
         // Send data first based on the position
         var gotoBusyWorkoutExercisesActivity =
@@ -73,6 +68,4 @@ class BusyScheduleWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemCl
         gotoBusyWorkoutExercisesActivity.putExtra("position", position)
         startActivity(gotoBusyWorkoutExercisesActivity)
     }
-
-
 }

@@ -8,6 +8,7 @@ class Navbar(bottomNavigationView: BottomNavigationView, appCon: Context, navIte
 
     init {
 
+        // Initializes the navigation in the bottom navbar
         bottomNavigationView.selectedItemId = navItem
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {

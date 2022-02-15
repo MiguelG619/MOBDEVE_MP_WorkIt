@@ -38,15 +38,12 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase Auth, hides action bar, and initializes the sharedprefs
         auth = Firebase.auth
-
         initPrefs()
+        supportActionBar?.hide()
 
         binding.mcvContinue.setOnClickListener {
             firstName = binding.edtFname.text.toString()

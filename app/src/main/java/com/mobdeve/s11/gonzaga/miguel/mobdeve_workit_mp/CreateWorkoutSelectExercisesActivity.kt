@@ -21,25 +21,24 @@ class CreateWorkoutSelectExercisesActivity : AppCompatActivity(), ExerciseAdapte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateWorkoutSelectExercisesBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding!!.root)
 
-        supportActionBar!!.hide()
-
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
         populateList()
+
+        // Initalizes the adapters for the recyclerview
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding!!.rvExerciseList.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
         binding!!.rvExerciseList.adapter = exerciseAdapter
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
     }
 
     fun populateList() {
-        exerciseList = exerciseDAO.getExercises()!!
+        exerciseList = exerciseDAO.getExercises()
     }
 
     override fun onDeleteClick(position: Int) {

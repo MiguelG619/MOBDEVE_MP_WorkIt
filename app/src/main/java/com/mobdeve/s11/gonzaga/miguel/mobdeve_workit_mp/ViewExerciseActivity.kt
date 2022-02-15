@@ -14,14 +14,13 @@ class ViewExerciseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityViewExerciseBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
+        // Hides the action bar and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
-
+        // Receives the needed dat to be displayed
         name = intent.getStringExtra("title").toString()
         val description = intent.getStringExtra("description")
         val image = intent.getIntExtra("image", 0)
@@ -29,6 +28,7 @@ class ViewExerciseActivity : AppCompatActivity() {
         val sets = intent.getIntExtra("sets", 0)
         val rest = intent.getIntExtra("rest", 0)
 
+        // Updates the text views
         binding.tvExerciseTitle.text = name
         binding.tvExerciseDes.text = description
         binding.imageExercise.setImageResource(image)

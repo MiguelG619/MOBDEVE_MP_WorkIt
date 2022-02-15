@@ -35,15 +35,14 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogInBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding!!.root)
 
+        // Hides action bar and initilizes the sharedpreferences
+        supportActionBar?.hide()
         initPrefs()
 
+        // Initializes firebase
         auth = Firebase.auth
-
         binding!!.mcvLogin.setOnClickListener {
             if (isUserInputValid()) {
                 doLogin()
@@ -60,12 +59,11 @@ class LogInActivity : AppCompatActivity() {
 
         callbackManager = CallbackManager.Factory.create()
         fbLogIn.setPermissions(Arrays.asList("user_friends"))
-
-        // Callback registration
+        // Callback registration for facebook
         fbLogIn.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
             override fun onSuccess(loginResult: LoginResult?) {
+                // Gets the facebook user's basic information
                 val graphRequest = GraphRequest.newMeRequest(loginResult?.accessToken) { obj, response ->
-
                     try {
                         if (obj!!.has("id")) {
                             firstName = obj.getString("first_name")
@@ -78,7 +76,6 @@ class LogInActivity : AppCompatActivity() {
                         e.stackTrace
                     }
                 }
-
                 val param = Bundle()
                 param.putString("fields", "name, first_name")
                 graphRequest.parameters = param
@@ -101,9 +98,8 @@ class LogInActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-         // Check if there is user logged in
+         // Check if there is user logged in then log them in if there is
         if(currentUser != null){
-
             (this.application as GlobalVariables).id = currentUser.uid.toString()
             (this.application as GlobalVariables).name =
                 sharedPrefUtility.getStringPreferences(currentUser.uid + "firstName").toString()
@@ -120,7 +116,7 @@ class LogInActivity : AppCompatActivity() {
     }
 
     private fun handleFacebookAccessToken(token: AccessToken) {
-
+        // Signs in the facebook user
         val credential = FacebookAuthProvider.getCredential(token.token)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
@@ -140,6 +136,7 @@ class LogInActivity : AppCompatActivity() {
     }
 
     fun doLogin() {
+        // User fireabase signin function
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {

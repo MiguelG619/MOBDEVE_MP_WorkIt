@@ -26,15 +26,14 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateWorkoutBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding!!.root)
 
-        supportActionBar!!.hide()
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
-
+        // Initalizes the adapters for the recyclerview
         populateList()
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding!!.rvExerciseList.adapter = exerciseAdapter
@@ -44,6 +43,7 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
 
 
         binding!!.tvDone.setOnClickListener {
+            // Checks if there are added exercises
             var tempExerciseList =  (this.application as GlobalVariables).tempExerciseList
             if (tempExerciseList.isEmpty())
               Toast.makeText(this, "Add exercises first!", Toast.LENGTH_SHORT).show()
@@ -51,9 +51,7 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
                 var gotoNameWorkoutActivity = Intent(applicationContext, NameWorkoutActivity::class.java)
                 startActivity(gotoNameWorkoutActivity)
                 //SAve it workoutdao array
-
             }
-
 
         }
 
@@ -71,8 +69,7 @@ class CreateWorkoutActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickLi
 
     override fun onLoadClick(position: Int) {
         // Send data first based on the position
-        //Save na lang agad
-
+        // Goes to the add exercise activity
         var gotoAddExerciseToWorkoutActivityercise = Intent(applicationContext, AddExerciseToWorkoutActivity::class.java)
         gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseName", exerciseList[position]!!.title)
         gotoAddExerciseToWorkoutActivityercise.putExtra("exerciseDescription", exerciseList[position]!!.description)

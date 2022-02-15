@@ -28,6 +28,7 @@ class AddExerciseToWorkoutActivity : AppCompatActivity() {
 
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
+
         val exerciseName = intent.getStringExtra("exerciseName")
         val exerciseDescription = intent.getStringExtra("exerciseDescription")
         val exerciseImage = intent.getIntExtra("exerciseImage", 0)

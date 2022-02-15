@@ -35,18 +35,16 @@ class ReminderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityReminderBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Hides the action bar, initializes the sharedprefs, and initializes the navbar
         supportActionBar?.hide()
         Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_reminder)
 
-        // Sets the hour and minutes depending on the saved notification time
-        /*hour = (this.application as GlobalVariables).reminderHour
-        minute = (this.application as GlobalVariables).reminderMinute*/
-
         initPrefs()
+
         //Initializes the UI and Notification
         createNotificationChannel()
         setReminderText()
-
 
         binding.tvSelectTimeBtn.setOnClickListener {
             showTimePicker()
@@ -129,12 +127,9 @@ class ReminderActivity : AppCompatActivity() {
     }
 
     private fun showTimePicker() {
-        Toast.makeText(this, "fdss!", Toast.LENGTH_SHORT).show()
-
         materialTimePicker = MaterialTimePicker.Builder()
             .setTimeFormat(TimeFormat.CLOCK_12H)
             .build()
-
         materialTimePicker.show(supportFragmentManager, "WorkItId")
 
         materialTimePicker.addOnPositiveButtonClickListener {
@@ -142,17 +137,17 @@ class ReminderActivity : AppCompatActivity() {
             hour = materialTimePicker.hour
 
             setReminderText()
-
+            // Initializes the calendar
             calendar = Calendar.getInstance()
             calendar[Calendar.HOUR_OF_DAY] = hour
             calendar[Calendar.MINUTE] = minute
             calendar[Calendar.SECOND] = 0
             calendar[Calendar.MILLISECOND] = 0
-
         }
     }
 
     private fun setAlarm() {
+        //Saves the alarm in the phone
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
@@ -163,15 +158,13 @@ class ReminderActivity : AppCompatActivity() {
             pendingIntent
         )
 
-        /*(this.application as GlobalVariables).reminderHour = hour
-        (this.application as GlobalVariables).reminderMinute = minute*/
-        //reminder = calendar
         saveData()
         Toast.makeText(this, "Notification time set Successfully!", Toast.LENGTH_SHORT).show()
 
     }
 
     private fun cancelAlarm() {
+        // Cancels the notification alarm
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
 

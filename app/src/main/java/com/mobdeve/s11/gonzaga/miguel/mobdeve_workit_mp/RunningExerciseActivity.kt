@@ -22,10 +22,12 @@ class RunningExerciseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRunningExerciseBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
         setContentView(binding.root)
 
+        // Hides the action bar
+        supportActionBar?.hide()
+
+        // Receives the exercise details and updates the views
         var exerciseNumber = intent.getIntExtra("exerciseNumber", 0)
         val position = intent.getIntExtra("position", 10)
         var doneSets = intent.getIntExtra("doneSets", 0)
@@ -41,10 +43,9 @@ class RunningExerciseActivity : AppCompatActivity() {
 
 
         binding.tvDone.setOnClickListener {
-
             val restTime = exercises.get(exerciseNumber)?.restTime
             val gotoRestActivity  = Intent(applicationContext, RestTimeActivity::class.java)
-
+            // Checks if the exercise is in the last set
             if (exerciseNumber+1 == exercises.size)
                 status = "Done"
             val args = Bundle()

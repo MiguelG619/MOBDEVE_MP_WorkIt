@@ -29,39 +29,24 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyWorkoutBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding!!.root)
 
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
         initPrefs()
         populateList()
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
         // populates the user adapter
         workoutAdapter = WorkoutAdapter(workoutList, this)
 
-        // When using an adapter you can set the layout manager
-        // Grid or linear layout pwede gamitin
-        //Makes it scrollable if there are many content
+        // Initalizes the adapters for the recyclerview
         binding!!.rvWorkoutList.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
-
-        R.layout.activity_splash
-        // Send updated workoutlist from namewokrout
-        /*if (intent.hasExtra("index")) {
-            index = intent.getIntExtra("index", 0)
-            *//*Log.d("zzzzzzzzzzz", "workoutdao: " + index)*//*
-            Log.d("zzzzzzzzzzz", "workoutdao: " + workoutDAO.myWorkoutList[1]?.workoutName)
-
-            // make workoutDAO Global? kasi abvak isang beses lang pwede mag add ng workout?
-
-            workoutAdapter!!.notifyItemInserted(index)
-            workoutAdapter!!.notifyDataSetChanged()
-        }*/
-
-
         binding!!.rvWorkoutList.adapter = workoutAdapter
 
+        // updates the numer of workouts
         binding!!.tvWorkoutNumber.text = "${workoutList.size} Workouts"
 
         binding!!.tvCreate.setOnClickListener {
@@ -76,7 +61,7 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
 
         }
 
-        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
+
     }
 
     fun populateList() {
@@ -109,6 +94,4 @@ class MyWorkoutActivity : AppCompatActivity(), WorkoutAdapter.OnItemClickListene
         myWorkouts = (this.application as GlobalVariables).myWorkoutList
     }
 
-
-    //save and load based on the user's id
 }

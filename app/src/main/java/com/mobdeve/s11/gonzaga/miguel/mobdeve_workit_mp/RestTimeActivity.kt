@@ -28,21 +28,23 @@ class RestTimeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestTimeBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
         setContentView(binding.root)
 
+        // Hides the action bar
+        supportActionBar?.hide()
+
+        // Receives the exercise
         val args = intent.getBundleExtra("BUNDLE")
         exercises = args!!.getSerializable("ARRAYLIST") as ArrayList<ExerciseModel?>
         val restTimeExtra = intent.getIntExtra("restTime", 0)
         exerciseNumber = intent.getIntExtra("exerciseNumber", 0)
         doneSets = intent.getIntExtra("doneSets", 1) + 1
         position = intent.getIntExtra("position", 10)
+
         setWorkout()
 
-
+        // Initializes the rest time
         val restTimeLong = restTimeExtra.toLong()
-
         // Initialize timer duration
         // Get timer duration from workout exercise
         // Convert minute seconds to seconds
@@ -74,6 +76,7 @@ class RestTimeActivity : AppCompatActivity() {
         goBack()
     }
 
+    // Sets the workout name
     fun setWorkout() {
         workoutName = intent.getStringExtra("workoutName").toString()
         if (workoutName.equals("Burst Workout"))
@@ -95,6 +98,7 @@ class RestTimeActivity : AppCompatActivity() {
     }
 
     fun isDoneSet(): Boolean {
+        // Checks if the set it the last set of exercise
         var sets = intent.getIntExtra("sets", 1)
         if (doneSets == sets) {
 
@@ -102,10 +106,10 @@ class RestTimeActivity : AppCompatActivity() {
         } else if (doneSets == sets && exerciseNumber+1 != exercises.size) {
 
         }
-
         return false
     }
 
+    // Goes back to the workout if not yet finish, but otherwise, go to the done activity
     fun goBack() {
         if (isDoneWorkout() && isDoneSet()) {
             val gotoDoneActivity = Intent(applicationContext, WorkoutDoneActivity::class.java)

@@ -19,23 +19,26 @@ class WorkoutDoneActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWorkoutDoneBinding.inflate(layoutInflater)
 
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
         initPrefs()
 
+        //Receives the workout and exercise data
         val workoutName = intent.getStringExtra("workoutName")
         var subWorkout = intent.getIntExtra("day", 0).toString()
         val exerciseNumber = intent.getIntExtra("exerciseNumber", 10)
 
+        // Updates the text view
         if (workoutName.equals("Busy Workout") || workoutName.equals("Burst Workout")) {
             subWorkout = "Day ${subWorkout}"
         }
-
         binding.tvWorkoutName.text = "You completed the \n ${subWorkout} \n of the \n ${workoutName}"
         binding.tvNumberOfExercises.text = "${exerciseNumber} Exercises Finished"
         loadData()
+        //Adds streak by 1
         streak++
         saveData(streak)
 

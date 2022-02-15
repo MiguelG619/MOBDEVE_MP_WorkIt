@@ -24,23 +24,26 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBurstWorkoutExercisesBinding.inflate(layoutInflater)
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
-
-        // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
+        // Initializes sharedpreferences data, hides actionbar,
+        // and initializes the navbar
+        supportActionBar?.hide()
         populateList()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
+
+        // Initalizes the adapters for the recyclerview
         exerciseAdapter = ExerciseAdapter(exerciseList, this)
         binding.rvExercises.adapter = exerciseAdapter
         binding.rvExercises.layoutManager = LinearLayoutManager(applicationContext,
             LinearLayoutManager.VERTICAL,
             false)
 
-
+        // Start of workout
         binding.tvStart.setOnClickListener {
             val gotoRunningExerciseActivity = Intent(applicationContext, RunningExerciseActivity::class.java)
             val args = Bundle()
+            // loads the required data to make sure the running of the exercise works
             args.putSerializable("ARRAYLIST", exerciseList)
             gotoRunningExerciseActivity.putExtra("BUNDLE", args)
             gotoRunningExerciseActivity.putExtra("position", position)
@@ -50,24 +53,21 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
         }
 
         binding. ivBack.setOnClickListener {
-            // Load to Hom
+            // Loads back to home
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
         }
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
-
-
     }
 
     fun populateList() {
-        // get adapter position
+        // populates the exerciseList
         position = intent.getIntExtra("position", 10)
         exerciseList = workoutDAO.getBurstWorkoutExercises(position)!!
         updateText(position)
 
     }
 
+    // Updates the text views
     fun updateText(position: Int) {
         val workoutName = workoutDAO.burstWorkout[position]!!.workoutName
         binding.tvTitle.text = workoutName
@@ -85,7 +85,7 @@ class BurstWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnIte
 
 
     override fun onLoadClick(positionExercise: Int) {
-        // Send data first based on the position
+        // Send data first based on the position to view the clicked exercise
         var gotoViewExerciseActivity = Intent(applicationContext, ViewExerciseActivity::class.java)
         gotoViewExerciseActivity.putExtra("title", exerciseList[positionExercise]?.title)
         gotoViewExerciseActivity.putExtra("description", exerciseList[positionExercise]?.description)

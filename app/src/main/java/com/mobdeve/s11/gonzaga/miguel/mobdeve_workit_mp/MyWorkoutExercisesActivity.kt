@@ -30,11 +30,12 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyWorkoutExercisesBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
+        // Hides actionbar
+        // and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_home)
 
         // BURST WORKOUT DIN LAGAY DITO OR LAGAY SA IBANGG ACTIVITY?
         myWorkoutList = (this.application as GlobalVariables).myWorkoutList
@@ -61,11 +62,6 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
             val gotoHomeActivity = Intent(applicationContext, HomeActivity::class.java)
             startActivity(gotoHomeActivity)
         }
-
-
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_home)
-
-
     }
 
     fun populateList() {
@@ -84,9 +80,7 @@ class MyWorkoutExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemCl
         } else {
             binding.tvExerciseCount.text = "${numExercises} Exercises"
         }
-
     }
-
 
     override fun onDeleteClick(position: Int) {
         TODO("Not yet implemented")

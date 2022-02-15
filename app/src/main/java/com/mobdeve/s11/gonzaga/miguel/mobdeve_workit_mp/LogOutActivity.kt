@@ -18,20 +18,18 @@ class LogOutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogOutBinding.inflate(layoutInflater)
-
-        supportActionBar?.hide()
-
         setContentView(binding.root)
 
+        // Hides the aciton bar and initializes the navbar
+        supportActionBar?.hide()
+        Navbar(findViewById(R.id.bottom_navigation), this, R.id.nav_logout)
 
-        Navbar(findViewById<BottomNavigationView>(R.id.bottom_navigation), this, R.id.nav_logout)
-
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext())
 
         binding.btnYes.setOnClickListener {
             (this.application as GlobalVariables).streak = 0
             //  Logout the user first
-            // Logout FB
+            // Logout FB and the firebase
             LoginManager.getInstance().logOut();
             Firebase.auth.signOut()
             var gotoLogInActivity = Intent(applicationContext, LogInActivity::class.java)
